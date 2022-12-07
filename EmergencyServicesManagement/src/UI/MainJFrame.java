@@ -5,7 +5,10 @@
 package UI;
 
 import Services.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -13,13 +16,13 @@ import javax.swing.JFrame;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
-    private EcoSystem system;
-    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+//    private EcoSystem system;
+//    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
     public MainJFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
-        EcoSystem.setInstance(system);
+        //EcoSystem.setInstance(system);
         setExtendedState(getExtendedState()| JFrame.MAXIMIZED_BOTH);
     }
 
@@ -91,9 +94,9 @@ public class MainJFrame extends javax.swing.JFrame {
 
         //Step1: Check in the system user account directory if you have the user
         UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
-        Enterprise inEnterprise = null;
-        Organization inOrganization = null;
-        Network inNetwork = null;
+//        Enterprise inEnterprise = null;
+//        Organization inOrganization = null;
+//        Network inNetwork = null;
         if (userAccount == null) {
             //Step2: Go inside each network to check each enterprise
             for (Network network : system.getNetworkList()) {

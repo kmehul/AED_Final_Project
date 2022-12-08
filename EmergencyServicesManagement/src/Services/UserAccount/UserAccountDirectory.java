@@ -40,13 +40,13 @@ public class UserAccountDirectory {
 //        return userAccount;
 //    }
 //    
-     public UserAccount createUserAccount(String username, String password, /*Role role,*/ String firstname, String lastname){
+     public UserAccount createUserAccount(String username, String password, String role, String firstname, String lastname){
         UserAccount userAccount = new UserAccount();
         userAccount.setFirstName(firstname);
         userAccount.setLastName(lastname);
         userAccount.setUserName(username);
         userAccount.setPassword(password);
-//        userAccount.setRole(role);
+        userAccount.setRole(role);
         userAccountList.add(userAccount);
         return userAccount;  
      }

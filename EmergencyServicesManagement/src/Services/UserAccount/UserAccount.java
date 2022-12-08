@@ -17,7 +17,15 @@ public class UserAccount {
     private String userName;
     private String password;
 //    private Employee employee;
-//    private Role role;
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 //    private WorkQueue workQueue;
     private ArrayList<Integer> IncidentList;
 

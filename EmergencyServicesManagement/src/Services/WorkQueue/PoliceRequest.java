@@ -4,10 +4,19 @@
  */
 package Services.WorkQueue;
 
+import java.util.Date;
+
 /**
  *
  * @author Anirudh
  */
 public class PoliceRequest extends WorkRequest{
     
+    private int requestId;
+    private int workId;
+    private int victimId;
+    private String caseType;
+    private Date caseDate;
+    private String comments;
+    private Suspect suspect;
 }

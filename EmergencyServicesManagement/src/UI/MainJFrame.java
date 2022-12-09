@@ -21,7 +21,7 @@ public class MainJFrame extends javax.swing.JFrame {
     
     public MainJFrame() {
         initComponents();
-        system = dB4OUtil.retrieveSystem();
+        //system = dB4OUtil.retrieveSystem();
         //EcoSystem.setInstance(system);
         setExtendedState(getExtendedState()| JFrame.MAXIMIZED_BOTH);
     }
@@ -93,52 +93,52 @@ public class MainJFrame extends javax.swing.JFrame {
         String password = String.valueOf(passwordCharArray);
 
         //Step1: Check in the system user account directory if you have the user
-        UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
+//        UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
 //        Enterprise inEnterprise = null;
 //        Organization inOrganization = null;
 //        Network inNetwork = null;
-        if (userAccount == null) {
-            //Step2: Go inside each network to check each enterprise
-            for (Network network : system.getNetworkList()) {
-                //Step 2-a: Check against each enterprise
-                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                    userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
-                    if (userAccount == null) {
-                        //Step3: Check against each organization inside that enterprise
-                        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                            userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
+//        if (userAccount == null) {
+//            //Step2: Go inside each network to check each enterprise
+//            for (Network network : system.getNetworkList()) {
+//                //Step 2-a: Check against each enterprise
+//                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+//                    userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
+//                    if (userAccount == null) {
+//                        //Step3: Check against each organization inside that enterprise
+//                        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+//                            userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
+//
+//                            if (userAccount != null) {
+//                                //    System.out.println("organi"+ organization.getName());
+//                                inEnterprise = enterprise;
+//                                inOrganization = organization;
+//                                inNetwork = network;
+//                                break;
+//                            }
+//                        }
+//                    } else {
+//                        inEnterprise = enterprise;
+//                        inNetwork = network;
+//                        break;
+//                    }
+//                    if (inOrganization != null) {
+//                        break;
+//                    }
+//                }
+//                if (inEnterprise != null) {
+//                    break;
+//                }
+//            }
+//        }
 
-                            if (userAccount != null) {
-                                //    System.out.println("organi"+ organization.getName());
-                                inEnterprise = enterprise;
-                                inOrganization = organization;
-                                inNetwork = network;
-                                break;
-                            }
-                        }
-                    } else {
-                        inEnterprise = enterprise;
-                        inNetwork = network;
-                        break;
-                    }
-                    if (inOrganization != null) {
-                        break;
-                    }
-                }
-                if (inEnterprise != null) {
-                    break;
-                }
-            }
-        }
-
-        if (userAccount == null) {
-            JOptionPane.showMessageDialog(null, "Invalid Credentails!");
-            return;
-        } else {
-            CardLayout layout = (CardLayout) Container.getLayout();
-            Container.add("workArea", userAccount.getRole().createWorkArea(Container, userAccount, inOrganization, inEnterprise, inNetwork, system));
-            layout.next(Container);
-        }
+//        if (userAccount == null) {
+//            JOptionPane.showMessageDialog(null, "Please Enter Valid Credentails!");
+//            return;
+//        } else {
+//            CardLayout layout = (CardLayout) Container.getLayout();
+//            Container.add("workArea", userAccount.getRole().createWorkArea(Container, userAccount, inOrganization, inEnterprise, inNetwork, system));
+//            layout.next(Container);
+//        }
         btnLogin.setEnabled(false);
         btnLogout.setEnabled(true);
         txtUserName.setEnabled(false);
@@ -159,7 +159,7 @@ public class MainJFrame extends javax.swing.JFrame {
         Container.add("blank", blankJP);
         CardLayout crdLyt = (CardLayout) Container.getLayout();
         crdLyt.next(Container);
-        dB4OUtil.storeSystem(system);
+//        dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**

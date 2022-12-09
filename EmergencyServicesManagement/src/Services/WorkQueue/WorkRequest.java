@@ -14,7 +14,7 @@ public abstract class WorkRequest {
     private int workId;
     private int operatorId;
     private String initDesc;
-    private String assignedTo;
+    private String assignedToDept;
     private char status;
     private Date recievedDate;
     private Date resolvedDate;
@@ -47,12 +47,12 @@ public abstract class WorkRequest {
         this.initDesc = initDesc;
     }
 
-    public String getAssignedTo() {
-        return assignedTo;
+    public String getassignedToDept() {
+        return assignedToDept;
     }
 
-    public void setAssignedTo(String assignedTo) {
-        this.assignedTo = assignedTo;
+    public void setassignedToDept(String assignedToDept) {
+        this.assignedToDept = assignedToDept;
     }
 
     public char getStatus() {

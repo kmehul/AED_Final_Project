@@ -25,21 +25,28 @@ public class FireAdminInterface extends javax.swing.JFrame {
     private void initComponents() {
 
         lblFireAdmin = new javax.swing.JLabel();
-        btnCreateMarshal = new javax.swing.JButton();
+        btnManageFireMarshal = new javax.swing.JButton();
         btnAssignFire = new javax.swing.JButton();
-        btnAssignRescue = new javax.swing.JButton();
+        btnReports = new javax.swing.JButton();
+        btnAnalysis = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblFireAdmin.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblFireAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblFireAdmin.setText("WELCOME TO FIRE ADMIN WORK AREA");
+        lblFireAdmin.setText("FIRE ADMIN WORK AREA");
 
-        btnCreateMarshal.setText("Create Marshal");
+        btnManageFireMarshal.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnManageFireMarshal.setText("Manage Fire Marshal");
 
+        btnAssignFire.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnAssignFire.setText("Assign Fire Case");
 
-        btnAssignRescue.setText("Assign Rescue Case");
+        btnReports.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnReports.setText("Reports");
+
+        btnAnalysis.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnAnalysis.setText("Analysis");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -47,24 +54,29 @@ public class FireAdminInterface extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblFireAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
-                .addComponent(btnCreateMarshal)
-                .addGap(75, 75, 75)
-                .addComponent(btnAssignFire)
-                .addGap(75, 75, 75)
-                .addComponent(btnAssignRescue)
-                .addGap(96, 96, 96))
+                .addGap(150, 150, 150)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnManageFireMarshal, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(btnReports, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(68, 68, 68)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAnalysis, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAssignFire, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblFireAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(145, 145, 145)
+                .addGap(150, 150, 150)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCreateMarshal)
-                    .addComponent(btnAssignRescue)
+                    .addComponent(btnManageFireMarshal)
                     .addComponent(btnAssignFire))
-                .addGap(0, 365, Short.MAX_VALUE))
+                .addGap(100, 100, 100)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnReports)
+                    .addComponent(btnAnalysis))
+                .addGap(150, 150, 150))
         );
 
         pack();
@@ -73,9 +85,10 @@ public class FireAdminInterface extends javax.swing.JFrame {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnalysis;
     private javax.swing.JButton btnAssignFire;
-    private javax.swing.JButton btnAssignRescue;
-    private javax.swing.JButton btnCreateMarshal;
+    private javax.swing.JButton btnManageFireMarshal;
+    private javax.swing.JButton btnReports;
     private javax.swing.JLabel lblFireAdmin;
     // End of variables declaration//GEN-END:variables
 }

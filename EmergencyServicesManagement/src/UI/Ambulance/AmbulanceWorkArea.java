@@ -64,7 +64,7 @@ public class AmbulanceWorkArea extends javax.swing.JPanel {
             }
         });
 
-        lblAmbulanceTea.setText("Ambulance Driver");
+        lblAmbulanceTea.setText("Ambulance Employee");
 
         btnback.setText("BACK");
         btnback.addActionListener(new java.awt.event.ActionListener() {

@@ -16,24 +16,26 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" min="-2" pref="1154" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="1150" max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" pref="1150" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="1025" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="35" max="32767" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="54" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="433" max="-2" attributes="0"/>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" pref="54" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -49,13 +51,15 @@
         <Component class="javax.swing.JTable" name="jTable1">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="7" rowCount="0">
-                <Column editable="true" title="Report ID" type="java.lang.Object"/>
+              <Table columnCount="9" rowCount="4">
                 <Column editable="true" title="Work ID" type="java.lang.Object"/>
-                <Column editable="true" title="Ambulance ID" type="java.lang.Object"/>
-                <Column editable="true" title="Hospital Name" type="java.lang.Object"/>
-                <Column editable="true" title="Address of Incident" type="java.lang.Object"/>
-                <Column editable="true" title="VIctim Name" type="java.lang.Object"/>
+                <Column editable="true" title="Fire Marshal ID" type="java.lang.Object"/>
+                <Column editable="true" title="Incident Date" type="java.lang.Object"/>
+                <Column editable="true" title="Resolution Date" type="java.lang.Object"/>
+                <Column editable="true" title="Name of Sispect" type="java.lang.Object"/>
+                <Column editable="true" title="Name of VIctim" type="java.lang.Object"/>
+                <Column editable="true" title="Address of Victim" type="java.lang.Object"/>
+                <Column editable="true" title="Suspect Motive" type="java.lang.Object"/>
                 <Column editable="true" title="Comments" type="java.lang.Object"/>
               </Table>
             </Property>
@@ -63,7 +67,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="24" style="1"/>

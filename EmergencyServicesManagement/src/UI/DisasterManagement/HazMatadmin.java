@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package UI.Ambulance;
+package UI.DisasterManagement;
 
 import Constants.CustomValidations;
 import javax.swing.JOptionPane;
@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author Anirudh
  */
-public class AddNewAmbulanceEmployee extends javax.swing.JPanel {
+public class HazMatadmin extends javax.swing.JPanel {
 
     /**
-     * Creates new form AddNewAmbulanceEmployee
+     * Creates new form AddHazMAtEmployee
      */
-    public AddNewAmbulanceEmployee() {
+    public HazMatadmin() {
         initComponents();
     }
 
@@ -29,22 +29,22 @@ public class AddNewAmbulanceEmployee extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblHazmatManageEmp = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        btnSubmit3 = new javax.swing.JButton();
+        lblofficialid = new javax.swing.JLabel();
+        txtofficialid = new javax.swing.JTextField();
+        btnsearchhazmat = new javax.swing.JButton();
         txtnameupdate = new javax.swing.JTextField();
         lblUsername3 = new javax.swing.JLabel();
-        lblPassword2 = new javax.swing.JLabel();
+        lblusername = new javax.swing.JLabel();
         pwdPasswordupdate = new javax.swing.JPasswordField();
         txtusernameupdate = new javax.swing.JTextField();
-        lblName2 = new javax.swing.JLabel();
+        lblpasswordupdate = new javax.swing.JLabel();
         btnSubmit2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         txtuserName = new javax.swing.JTextField();
@@ -54,7 +54,12 @@ public class AddNewAmbulanceEmployee extends javax.swing.JPanel {
         pwdPassword = new javax.swing.JPasswordField();
         lblUSERname = new javax.swing.JLabel();
         lblpassword = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        btnback = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+
+        lblHazmatManageEmp.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lblHazmatManageEmp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHazmatManageEmp.setText("Manage HAZMAT TEAM");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -68,14 +73,7 @@ public class AddNewAmbulanceEmployee extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("CURRENT REGISTERED OPERATORS");
-
-        btnBack.setText("BACK");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
+        jLabel2.setText(" CURRENT HAZMAT OFFICIALS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -83,41 +81,29 @@ public class AddNewAmbulanceEmployee extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(32, 32, 32)
-                    .addComponent(jLabel2)
-                    .addContainerGap(434, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(29, 29, 29)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(466, Short.MAX_VALUE)))
+                .addGap(89, 89, 89))
         );
 
         jTabbedPane1.addTab("View Employees", jPanel1);
 
-        jLabel3.setText("ENTER EMPLOYEE ID");
+        lblofficialid.setText("ENTER OFFCIAL ID");
 
-        btnSubmit3.setText("SEARCH");
-        btnSubmit3.addActionListener(new java.awt.event.ActionListener() {
+        btnsearchhazmat.setText("SEARCH");
+        btnsearchhazmat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSubmit3ActionPerformed(evt);
+                btnsearchhazmatActionPerformed(evt);
             }
         });
 
@@ -130,8 +116,8 @@ public class AddNewAmbulanceEmployee extends javax.swing.JPanel {
         lblUsername3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblUsername3.setText("ENTER NAME");
 
-        lblPassword2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblPassword2.setText("ENTER USERNAME");
+        lblusername.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblusername.setText("ENTER USERNAME");
 
         pwdPasswordupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,8 +136,8 @@ public class AddNewAmbulanceEmployee extends javax.swing.JPanel {
             }
         });
 
-        lblName2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblName2.setText("ENTER PASSWORD");
+        lblpasswordupdate.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblpasswordupdate.setText("ENTER PASSWORD");
 
         btnSubmit2.setText("SAVE");
         btnSubmit2.addActionListener(new java.awt.event.ActionListener() {
@@ -173,15 +159,15 @@ public class AddNewAmbulanceEmployee extends javax.swing.JPanel {
                         .addGap(153, 153, 153)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(lblofficialid)
                                 .addGap(47, 47, 47)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtofficialid, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
-                                .addComponent(btnSubmit3))
+                                .addComponent(btnsearchhazmat))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblName2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblpasswordupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblusername, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblUsername3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,16 +175,16 @@ public class AddNewAmbulanceEmployee extends javax.swing.JPanel {
                                     .addComponent(txtusernameupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(pwdPasswordupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSubmit3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(txtofficialid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnsearchhazmat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblofficialid))
                 .addGap(68, 68, 68)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblUsername3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -206,9 +192,9 @@ public class AddNewAmbulanceEmployee extends javax.swing.JPanel {
                 .addGap(49, 49, 49)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblusername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
-                        .addComponent(lblName2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblpasswordupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(txtusernameupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
@@ -279,7 +265,7 @@ public class AddNewAmbulanceEmployee extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,34 +291,77 @@ public class AddNewAmbulanceEmployee extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Add Employee", jPanel2);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Manage AMBULANCE EMPLOYEES");
+        btnback.setText("BACK");
+
+        jButton1.setText("BACK");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jTabbedPane1)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTabbedPane1)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblHazmatManageEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHazmatManageEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(15, 15, 15))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+    private void btnsearchhazmatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchhazmatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnBackActionPerformed
+    }//GEN-LAST:event_btnsearchhazmatActionPerformed
+
+    private void txtnameupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameupdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnameupdateActionPerformed
+
+    private void pwdPasswordupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdPasswordupdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pwdPasswordupdateActionPerformed
+
+    private void txtusernameupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameupdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtusernameupdateActionPerformed
+
+    private void txtusernameupdateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusernameupdateKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtusernameupdateKeyPressed
+
+    private void btnSubmit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmit2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSubmit2ActionPerformed
+
+    private void txtuserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtuserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtuserNameActionPerformed
+
+    private void txtuserNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtuserNameKeyPressed
+        // TODO add your handling code here:
+        CustomValidations.onlyString(evt, txtuserName);
+    }//GEN-LAST:event_txtuserNameKeyPressed
 
     private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
         // TODO add your handling code here:
@@ -378,65 +407,33 @@ public class AddNewAmbulanceEmployee extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_pwdPasswordActionPerformed
 
-    private void txtuserNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtuserNameKeyPressed
-        // TODO add your handling code here:
-        CustomValidations.onlyString(evt, txtuserName);
-    }//GEN-LAST:event_txtuserNameKeyPressed
-
-    private void txtuserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtuserNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtuserNameActionPerformed
-
-    private void btnSubmit3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmit3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSubmit3ActionPerformed
-
-    private void txtnameupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameupdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnameupdateActionPerformed
-
-    private void pwdPasswordupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdPasswordupdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pwdPasswordupdateActionPerformed
-
-    private void txtusernameupdateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusernameupdateKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtusernameupdateKeyPressed
-
-    private void btnSubmit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmit2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSubmit2ActionPerformed
-
-    private void txtusernameupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameupdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtusernameupdateActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JButton btnSubmit2;
-    private javax.swing.JButton btnSubmit3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnback;
+    private javax.swing.JButton btnsearchhazmat;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel lblName2;
-    private javax.swing.JLabel lblPassword2;
+    private javax.swing.JLabel lblHazmatManageEmp;
     private javax.swing.JLabel lblUSERname;
     private javax.swing.JLabel lblUsername3;
     private javax.swing.JLabel lblname1;
+    private javax.swing.JLabel lblofficialid;
     private javax.swing.JLabel lblpassword;
+    private javax.swing.JLabel lblpasswordupdate;
+    private javax.swing.JLabel lblusername;
     private javax.swing.JPasswordField pwdPassword;
     private javax.swing.JPasswordField pwdPasswordupdate;
     private javax.swing.JTextField txtname;
     private javax.swing.JTextField txtnameupdate;
+    private javax.swing.JTextField txtofficialid;
     private javax.swing.JTextField txtuserName;
     private javax.swing.JTextField txtusernameupdate;
     // End of variables declaration//GEN-END:variables

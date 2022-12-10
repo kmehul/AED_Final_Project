@@ -36,7 +36,7 @@ public class AmbulanceAdmin extends javax.swing.JPanel {
         lblOperatorAdminInterface.setText("Ambulance Admin Interface");
 
         btnAddAmbulance.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        btnAddAmbulance.setText("Add New Ambulance Driver");
+        btnAddAmbulance.setText("Add New Ambulance Employee");
         btnAddAmbulance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddAmbulanceActionPerformed(evt);

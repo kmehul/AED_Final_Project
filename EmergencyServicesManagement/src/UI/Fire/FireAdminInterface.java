@@ -40,10 +40,20 @@ public class FireAdminInterface extends javax.swing.JFrame {
         btnManageFireMarshal.setText("Manage Fire Marshal");
 
         btnAssignFire.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        btnAssignFire.setText("Assign Fire Case");
+        btnAssignFire.setText("Manage Fire Work Queue");
+        btnAssignFire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignFireActionPerformed(evt);
+            }
+        });
 
         btnReports.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnReports.setText("Reports");
+        btnReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportsActionPerformed(evt);
+            }
+        });
 
         btnAnalysis.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnAnalysis.setText("Analysis");
@@ -81,6 +91,14 @@ public class FireAdminInterface extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportsActionPerformed
+
+    private void btnAssignFireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignFireActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAssignFireActionPerformed
 
   
 

@@ -24,145 +24,225 @@ public class FireAdminViewReport extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        btnGangYes = new javax.swing.JRadioButton();
+        btnGangNo = new javax.swing.JRadioButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtIncidentDate = new javax.swing.JTextField();
+        txtGunType = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        btnHistoryYes = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtMotive = new javax.swing.JTextArea();
+        txtIncidentType = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        btnHistoryNo = new javax.swing.JRadioButton();
+        jLabel6 = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JTextField();
+        txtCaseID = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtSuspectName = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        txtAddress1 = new javax.swing.JTextField();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtOfficerComments = new javax.swing.JTextArea();
+        txtGangName = new javax.swing.JTextField();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblReport1 = new javax.swing.JTable();
         btnBack1 = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
-        txtFireReportAssignedMarshal1 = new javax.swing.JPasswordField();
-        txtFireReportIncDesc1 = new javax.swing.JTextField();
-        txtFireReportAlertTime1 = new javax.swing.JPasswordField();
-        txtFireReportStatus1 = new javax.swing.JPasswordField();
-        lblWorkID1 = new javax.swing.JLabel();
-        lblPassword8 = new javax.swing.JLabel();
-        lblVictimID1 = new javax.swing.JLabel();
-        txtFireReportWorkID1 = new javax.swing.JTextField();
-        txtFireReportVictimID1 = new javax.swing.JPasswordField();
-        lblUserName3 = new javax.swing.JLabel();
-        lblCity3 = new javax.swing.JLabel();
-        lblPassword9 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtIncidentDate1 = new javax.swing.JTextField();
+        txtGunType1 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtMotive1 = new javax.swing.JTextArea();
+        txtIncidentType1 = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        txtAddress2 = new javax.swing.JTextField();
+        txtCaseID1 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        txtSuspectName1 = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        txtAddress3 = new javax.swing.JTextField();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        txtOfficerComments1 = new javax.swing.JTextArea();
+        txtSuspectName2 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+
+        jLabel2.setText("jLabel2");
+
+        btnGangYes.setText("Yes");
+
+        btnGangNo.setText("No");
+
+        jLabel3.setText(" Address of Victim");
+
+        txtIncidentDate.setEnabled(false);
+
+        jLabel10.setText("Incident Date");
+
+        jLabel4.setText("Does suspect has history with Police");
+
+        jLabel11.setText("Police  ID");
+
+        jLabel5.setText("What was the motive of Suspect ?");
+
+        btnHistoryYes.setText("Yes");
+
+        txtMotive.setColumns(20);
+        txtMotive.setRows(5);
+        jScrollPane1.setViewportView(txtMotive);
+
+        txtIncidentType.setEnabled(false);
+
+        jLabel7.setText("Address of suspect");
+
+        btnHistoryNo.setText("No");
+
+        jLabel6.setText("Work ID");
+
+        txtCaseID.setEnabled(false);
+
+        jLabel8.setText("Name of Victim");
+
+        jLabel9.setText("Name of Suspect");
+
+        jLabel15.setText("Is suspect associated with any group/gang?");
+
+        jLabel16.setText("Name of Group associated if any:");
+
+        jLabel17.setText("Observations/comments of Investaging Officer:");
+
+        txtOfficerComments.setColumns(20);
+        txtOfficerComments.setRows(5);
+        jScrollPane5.setViewportView(txtOfficerComments);
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jScrollPane4.setViewportView(jEditorPane1);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Existing Reports");
+        jLabel1.setText("FIRE REPORT");
 
-        tblReport1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Work ID", "Victim ID", "Alert Time", "Status", "Assigned Marshal"
-            }
-        ));
-        jScrollPane3.setViewportView(tblReport1);
+        btnBack1.setText("EXIT");
 
-        btnBack1.setText("Back");
+        btnView.setText("SAVE");
 
-        btnView.setText("View");
+        jLabel12.setText(" Address of Victim");
 
-        txtFireReportAssignedMarshal1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFireReportAssignedMarshal1ActionPerformed(evt);
-            }
-        });
+        txtIncidentDate1.setEnabled(false);
 
-        txtFireReportIncDesc1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFireReportIncDesc1ActionPerformed(evt);
-            }
-        });
+        jLabel13.setText("Incident Date");
 
-        txtFireReportAlertTime1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFireReportAlertTime1ActionPerformed(evt);
-            }
-        });
+        jLabel18.setText("Fire Mardshall ID");
 
-        txtFireReportStatus1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFireReportStatus1ActionPerformed(evt);
-            }
-        });
+        jLabel19.setText("What was the motive of Suspect ?");
 
-        lblWorkID1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblWorkID1.setText("Work ID");
+        txtMotive1.setColumns(20);
+        txtMotive1.setRows(5);
+        jScrollPane2.setViewportView(txtMotive1);
 
-        lblPassword8.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblPassword8.setText("Status");
+        txtIncidentType1.setEnabled(false);
 
-        lblVictimID1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblVictimID1.setText("Victim ID");
+        jLabel20.setText("Address of suspect");
 
-        txtFireReportWorkID1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFireReportWorkID1ActionPerformed(evt);
-            }
-        });
+        jLabel21.setText("Work ID");
 
-        txtFireReportVictimID1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFireReportVictimID1ActionPerformed(evt);
-            }
-        });
+        txtCaseID1.setEnabled(false);
 
-        lblUserName3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblUserName3.setText("Incident Description");
+        jLabel22.setText("Name of Victim");
 
-        lblCity3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblCity3.setText("Alert Time");
+        jLabel23.setText("Name of Suspect");
 
-        lblPassword9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblPassword9.setText("Assigned Marshal");
+        jLabel26.setText("Observations/comments of Fire Officer");
+
+        txtOfficerComments1.setColumns(20);
+        txtOfficerComments1.setRows(5);
+        jScrollPane6.setViewportView(txtOfficerComments1);
+
+        jLabel14.setText("Resolution Date");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblUserName3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(688, 688, 688))
-                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 832, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(191, 191, 191)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jLabel21)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel14)
+                                        .addComponent(jLabel13)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtCaseID1, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                                    .addComponent(txtIncidentDate1)
+                                    .addComponent(txtIncidentType1)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(202, 202, 202)
+                                .addComponent(jLabel22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtAddress3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(193, 193, 193)
+                                            .addComponent(jLabel23))
+                                        .addComponent(jLabel12))
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtSuspectName1)
+                                    .addComponent(txtAddress2)
+                                    .addComponent(txtGunType1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                                    .addComponent(txtSuspectName2, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblWorkID1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtFireReportWorkID1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(113, 113, 113)
+                                        .addComponent(jLabel19))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(jLabel26)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(lblVictimID1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lblCity3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtFireReportVictimID1)
-                                            .addComponent(txtFireReportAlertTime1)
-                                            .addComponent(txtFireReportIncDesc1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(34, 34, 34)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblPassword9, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtFireReportAssignedMarshal1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblPassword8, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtFireReportStatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,77 +250,111 @@ public class FireAdminViewReport extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblWorkID1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFireReportWorkID1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel21)
+                    .addComponent(txtCaseID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVictimID1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFireReportVictimID1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPassword8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFireReportStatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel18)
+                    .addComponent(txtIncidentType1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCity3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFireReportAlertTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPassword9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFireReportAssignedMarshal1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIncidentDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSuspectName2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(txtSuspectName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(txtAddress2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(txtAddress3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtGunType1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFireReportIncDesc1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUserName3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel19)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26))
+                .addGap(43, 43, 43)
                 .addComponent(btnView)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                 .addComponent(btnBack1)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFireReportAssignedMarshal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFireReportAssignedMarshal1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFireReportAssignedMarshal1ActionPerformed
-
-    private void txtFireReportIncDesc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFireReportIncDesc1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFireReportIncDesc1ActionPerformed
-
-    private void txtFireReportAlertTime1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFireReportAlertTime1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFireReportAlertTime1ActionPerformed
-
-    private void txtFireReportStatus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFireReportStatus1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFireReportStatus1ActionPerformed
-
-    private void txtFireReportWorkID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFireReportWorkID1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFireReportWorkID1ActionPerformed
-
-    private void txtFireReportVictimID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFireReportVictimID1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFireReportVictimID1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack1;
+    private javax.swing.JRadioButton btnGangNo;
+    private javax.swing.JRadioButton btnGangYes;
+    private javax.swing.JRadioButton btnHistoryNo;
+    private javax.swing.JRadioButton btnHistoryYes;
     private javax.swing.JButton btnView;
+    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel lblCity3;
-    private javax.swing.JLabel lblPassword8;
-    private javax.swing.JLabel lblPassword9;
-    private javax.swing.JLabel lblUserName3;
-    private javax.swing.JLabel lblVictimID1;
-    private javax.swing.JLabel lblWorkID1;
-    private javax.swing.JTable tblReport1;
-    private javax.swing.JPasswordField txtFireReportAlertTime1;
-    private javax.swing.JPasswordField txtFireReportAssignedMarshal1;
-    private javax.swing.JTextField txtFireReportIncDesc1;
-    private javax.swing.JPasswordField txtFireReportStatus1;
-    private javax.swing.JPasswordField txtFireReportVictimID1;
-    private javax.swing.JTextField txtFireReportWorkID1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtAddress1;
+    private javax.swing.JTextField txtAddress2;
+    private javax.swing.JTextField txtAddress3;
+    private javax.swing.JTextField txtCaseID;
+    private javax.swing.JTextField txtCaseID1;
+    private javax.swing.JTextField txtGangName;
+    private javax.swing.JTextField txtGunType;
+    private javax.swing.JTextField txtGunType1;
+    private javax.swing.JTextField txtIncidentDate;
+    private javax.swing.JTextField txtIncidentDate1;
+    private javax.swing.JTextField txtIncidentType;
+    private javax.swing.JTextField txtIncidentType1;
+    private javax.swing.JTextArea txtMotive;
+    private javax.swing.JTextArea txtMotive1;
+    private javax.swing.JTextArea txtOfficerComments;
+    private javax.swing.JTextArea txtOfficerComments1;
+    private javax.swing.JTextField txtSuspectName;
+    private javax.swing.JTextField txtSuspectName1;
+    private javax.swing.JTextField txtSuspectName2;
     // End of variables declaration//GEN-END:variables
 }

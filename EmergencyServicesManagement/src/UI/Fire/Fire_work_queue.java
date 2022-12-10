@@ -32,7 +32,7 @@ public class Fire_work_queue extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("FIRE WORK QUEUE");
+        jLabel1.setText("POLICE WORK QUEUE");
 
         jButton2.setText("SHOW MASTER WORK QUEUE");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -66,9 +66,9 @@ public class Fire_work_queue extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(56, 56, 56)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114)
+                .addGap(121, 121, 121)
                 .addComponent(jButton2)
                 .addGap(46, 46, 46)
                 .addComponent(jButton3)

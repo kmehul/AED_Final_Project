@@ -42,7 +42,8 @@ public class MainJFrame extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
         lblUserName = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
-        btnLogout = new javax.swing.JButton();
+        btnComplaint = new javax.swing.JButton();
+        btnLogout1 = new javax.swing.JButton();
         Container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,14 +66,28 @@ public class MainJFrame extends javax.swing.JFrame {
         lblPassword.setText("Password");
         LoginJPanel.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 86, -1, -1));
 
-        btnLogout.setText("Logout");
-        btnLogout.setEnabled(false);
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+        btnComplaint.setBackground(new java.awt.Color(255, 255, 255));
+        btnComplaint.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        btnComplaint.setForeground(new java.awt.Color(255, 255, 255));
+        btnComplaint.setText("Complaint");
+        btnComplaint.setToolTipText("");
+        btnComplaint.setBorder(new javax.swing.border.MatteBorder(null));
+        btnComplaint.setEnabled(false);
+        btnComplaint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
+                btnComplaintActionPerformed(evt);
             }
         });
-        LoginJPanel.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 208, 100, -1));
+        LoginJPanel.add(btnComplaint, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 573, 100, 80));
+
+        btnLogout1.setText("Logout");
+        btnLogout1.setEnabled(false);
+        btnLogout1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogout1ActionPerformed(evt);
+            }
+        });
+        LoginJPanel.add(btnLogout1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 208, 100, -1));
 
         jSplitPane1.setLeftComponent(LoginJPanel);
 
@@ -140,13 +155,13 @@ public class MainJFrame extends javax.swing.JFrame {
 //            layout.next(Container);
 //        }
         btnLogin.setEnabled(false);
-        btnLogout.setEnabled(true);
+        btnComplaint.setEnabled(true);
         txtUserName.setEnabled(false);
         txtPassword.setEnabled(false);
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        btnLogout.setEnabled(false);
+    private void btnComplaintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComplaintActionPerformed
+        btnComplaint.setEnabled(false);
         txtUserName.setEnabled(true);
         txtPassword.setEnabled(true);
         btnLogin.setEnabled(true);
@@ -160,7 +175,11 @@ public class MainJFrame extends javax.swing.JFrame {
         CardLayout crdLyt = (CardLayout) Container.getLayout();
         crdLyt.next(Container);
 //        dB4OUtil.storeSystem(system);
-    }//GEN-LAST:event_btnLogoutActionPerformed
+    }//GEN-LAST:event_btnComplaintActionPerformed
+
+    private void btnLogout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogout1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,8 +219,9 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Container;
     private javax.swing.JPanel LoginJPanel;
+    private javax.swing.JButton btnComplaint;
     private javax.swing.JButton btnLogin;
-    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnLogout1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUserName;

@@ -4,17 +4,27 @@
  */
 package UI.DisasterManagement;
 
+import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
+import java.sql.*;
+
 /**
  *
  * @author tanujverma
  */
 public class tact_report extends javax.swing.JPanel {
-
+    
+    private Connection con;
+    private UserAccount user;
+    
     /**
      * Creates new form tact_report
      */
-    public tact_report() {
+    public tact_report(UserAccount user, Connection con) {
         initComponents();
+	this.user = user;
+        this.con = con;
+
     }
 
     /**
@@ -85,6 +95,11 @@ public class tact_report extends javax.swing.JPanel {
         jLabel8.setText("No. of Casualties");
 
         jButton1.setText("BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -220,6 +235,13 @@ public class tact_report extends javax.swing.JPanel {
 //            System.out.println(e);
 //        }
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+       
+        TactTeamworkarea panel = new TactTeamworkarea(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

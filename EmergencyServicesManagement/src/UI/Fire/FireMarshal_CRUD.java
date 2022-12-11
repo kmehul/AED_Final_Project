@@ -5,6 +5,9 @@
 package UI.Fire;
 
 import javax.swing.JOptionPane;
+import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
+import java.sql.*;
 
 /**
  *
@@ -12,11 +15,18 @@ import javax.swing.JOptionPane;
  */
 public class FireMarshal_CRUD extends javax.swing.JPanel {
 
+    private Connection con;
+    private UserAccount user;
+
+
     /**
      * Creates new form NewJPanel
      */
-    public FireMarshal_CRUD() {
+    public FireMarshal_CRUD(UserAccount user, Connection con) {
         initComponents();
+        this.user = user;
+        this.con = con;
+
     }
 
     /**
@@ -31,7 +41,6 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        btnBack1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         btnSubmit2 = new javax.swing.JButton();
         lblSearchMarshalID = new javax.swing.JLabel();
@@ -47,20 +56,20 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
         txtUserName1 = new javax.swing.JTextField();
         lblUserName1 = new javax.swing.JLabel();
         txtMarshalName1 = new javax.swing.JPasswordField();
-        btnBack = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         txtMarshalName = new javax.swing.JPasswordField();
         txtMarshalID = new javax.swing.JTextField();
         lblCity = new javax.swing.JLabel();
         btnSubmit = new javax.swing.JButton();
-        lblMarshalID = new javax.swing.JLabel();
         lblMarshalName = new javax.swing.JLabel();
         cmbMarshalCity = new javax.swing.JComboBox<>();
         txtUserName = new javax.swing.JTextField();
         lblUserName = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
+        lblMarshalID2 = new javax.swing.JLabel();
         btnBack2 = new javax.swing.JButton();
+        lblMarshalID = new javax.swing.JLabel();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,8 +85,6 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CURRENT FIRE MARSHALS");
 
-        btnBack1.setText("Back");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -86,11 +93,7 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(780, 780, 780)
-                        .addComponent(btnBack1)
-                        .addGap(0, 60, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1029, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -100,9 +103,7 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(84, 84, 84)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addComponent(btnBack1)
-                .addGap(59, 59, 59))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         paneupdate.addTab("VIEW", jPanel1);
@@ -164,8 +165,6 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
             }
         });
 
-        btnBack.setText("Back");
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -173,9 +172,7 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(291, 291, 291)
                 .addComponent(btnSubmit2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBack)
-                .addGap(65, 65, 65))
+                .addGap(65, 550, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -206,7 +203,7 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
                                     .addComponent(txtMarshalID1)
                                     .addComponent(txtMarshalName1)
                                     .addComponent(cmbMarshalCity1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,7 +213,7 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
                     .addComponent(txtSearchMarshalID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearchMarshalID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSearchMarshalID))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(txtMarshalID1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,9 +238,7 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
                         .addGap(35, 35, 35)
                         .addComponent(lblPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(53, 53, 53)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSubmit2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBack))
+                .addComponent(btnSubmit2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66))
         );
 
@@ -271,9 +266,6 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
             }
         });
 
-        lblMarshalID.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblMarshalID.setText("ENTER MARSHAL ID");
-
         lblMarshalName.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblMarshalName.setText("ENTER NAME");
 
@@ -297,7 +289,8 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
             }
         });
 
-        btnBack2.setText("Back");
+        lblMarshalID2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblMarshalID2.setText("ENTER MARSHAL ID");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -317,20 +310,22 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblCity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblMarshalName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblMarshalID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblMarshalName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtMarshalID, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(txtMarshalName, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(cmbMarshalCity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addContainerGap(440, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(299, 299, 299)
                 .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBack2)
-                .addGap(126, 126, 126))
+                .addGap(126, 542, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(205, 205, 205)
+                    .addComponent(lblMarshalID2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(636, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,8 +337,7 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
                         .addGap(35, 35, 35)
                         .addComponent(txtMarshalName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblMarshalID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
+                        .addGap(65, 65, 65)
                         .addComponent(lblMarshalName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -360,23 +354,51 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
                         .addGap(35, 35, 35)
                         .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(100, 100, 100)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBack2))
+                .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(66, 66, 66)
+                    .addComponent(lblMarshalID2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(455, Short.MAX_VALUE)))
         );
 
         paneupdate.addTab("CREATE", jPanel3);
+
+        btnBack2.setText("Back");
+        btnBack2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack2ActionPerformed(evt);
+            }
+        });
+
+        lblMarshalID.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblMarshalID.setText("FIRE MARSHAL MANAGEMENT");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(paneupdate, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(paneupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 1041, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblMarshalID, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(paneupdate, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 33, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMarshalID, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(paneupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -456,10 +478,14 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMarshalName1ActionPerformed
 
+    private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
+        // TODO add your handling code here:
+        firadminInterface panel = new firadminInterface(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
+    }//GEN-LAST:event_btnBack2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnBack1;
     private javax.swing.JButton btnBack2;
     private javax.swing.JButton btnSearchMarshalID;
     private javax.swing.JButton btnSubmit;
@@ -476,6 +502,7 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
     private javax.swing.JLabel lblCity1;
     private javax.swing.JLabel lblMarshalID;
     private javax.swing.JLabel lblMarshalID1;
+    private javax.swing.JLabel lblMarshalID2;
     private javax.swing.JLabel lblMarshalName;
     private javax.swing.JLabel lblMarshalName1;
     private javax.swing.JLabel lblPassword;

@@ -6,14 +6,12 @@ package UI;
 
 import Services.SqlConn.SqlConn;
 import Services.UserAccount.UserAccount;
-import Services.UserAccount.UserAccountDirectory;
 import UI.AdminInterface.SystemAdminInterface;
 import UI.Ambulance.AmbulanceAdmin;
 import UI.Ambulance.Ambulance_work_queue;
 import UI.DisasterManagement.DM_work_queue;
 import UI.DisasterManagement.Hazmatteamworkarea;
 import UI.DisasterManagement.TactTeamworkarea;
-
 import UI.Fire.Fire_work_queue;
 import UI.Fire.firadminInterface;
 import UI.OperatorHandling.OperatorAdmin;
@@ -116,63 +114,60 @@ public class MainJFrame extends javax.swing.JFrame {
         try{
         stmt = con.createStatement();  
         rs = stmt.executeQuery("select * from user_account where user_username = '" + userName + "' and user_password = '" + password + "'");  
-        System.out.println(rs.next());
+        
         user.setId(rs.getInt("user_id"));
         user.setName(rs.getString("user_name"));
         user.setUserName(rs.getString("user_username"));
         user.setPassword(rs.getString("user_password"));
         user.setRole(rs.getString("user_role"));
         
-        //int day = 4;
         switch (user.getRole()) {
             case "sys":{
-                System.out.println("sys admin");
-                JPanel userProcessContainer = new JPanel();
                 SystemAdminInterface admininteraface = new SystemAdminInterface(user, con);
                 jSplitPane1.setRightComponent(admininteraface);
                 break;}
             case "opa":{
-                OperatorAdmin admininteraface = new OperatorAdmin(user);
+                OperatorAdmin admininteraface = new OperatorAdmin(user, con);
                 jSplitPane1.setRightComponent(admininteraface);
                 break;}
             case "fma":{
-                firadminInterface admininteraface = new firadminInterface(user);
+                firadminInterface admininteraface = new firadminInterface(user, con);
                 jSplitPane1.setRightComponent(admininteraface);
                 break;}
             case "poa":{
-                Police_Admin admininteraface = new Police_Admin(user);
+                Police_Admin admininteraface = new Police_Admin(user, con);
                 jSplitPane1.setRightComponent(admininteraface);
                 break;}
             case "dma":{
-                DM_work_queue admininteraface = new DM_work_queue(user);
+                DM_work_queue admininteraface = new DM_work_queue(user, con);
                 jSplitPane1.setRightComponent(admininteraface);
                 break;}           
             case "aba":{
-                AmbulanceAdmin admininteraface = new AmbulanceAdmin(user);
+                AmbulanceAdmin admininteraface = new AmbulanceAdmin(user, con);
                 jSplitPane1.setRightComponent(admininteraface);
                 break;}             
             case "ope":{
-                Operator_admin_queue admininteraface = new Operator_admin_queue(user);
+                Operator_admin_queue admininteraface = new Operator_admin_queue(user, con);
                 jSplitPane1.setRightComponent(admininteraface);
                 break;}
             case "fme":{
-                Fire_work_queue admininteraface = new Fire_work_queue(user);
+                Fire_work_queue admininteraface = new Fire_work_queue(user, con);
                 jSplitPane1.setRightComponent(admininteraface);
                 break;}
             case "poe":{
-                Police_work_queue admininteraface = new Police_work_queue(user);
+                Police_work_queue admininteraface = new Police_work_queue(user, con);
                 jSplitPane1.setRightComponent(admininteraface);
                 break;}
             case "ame":{
-                Ambulance_work_queue admininteraface = new Ambulance_work_queue(user);
+                Ambulance_work_queue admininteraface = new Ambulance_work_queue(user, con);
                 jSplitPane1.setRightComponent(admininteraface);
                 break;}               
             case "hze":{
-                Hazmatteamworkarea admininteraface = new Hazmatteamworkarea(user);
+                Hazmatteamworkarea admininteraface = new Hazmatteamworkarea(user, con);
                 jSplitPane1.setRightComponent(admininteraface);
                 break;}               
             case "tte":{
-                TactTeamworkarea admininteraface = new TactTeamworkarea(user);
+                TactTeamworkarea admininteraface = new TactTeamworkarea(user, con);
                 jSplitPane1.setRightComponent(admininteraface);
                 break;}              
             }
@@ -186,55 +181,6 @@ public class MainJFrame extends javax.swing.JFrame {
             //sqlSystem.DisplayMessage(e.getMessage());
             JOptionPane.showMessageDialog(null, "Please Enter valid Login credentials\n" + e.getMessage());
         }
-        
-        
-        //Step1: Check in the system user account directory if you have the user
-//        UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
-//        Enterprise inEnterprise = null;
-//        Organization inOrganization = null;
-//        Network inNetwork = null;
-//        if (userAccount == null) {
-//            //Step2: Go inside each network to check each enterprise
-//            for (Network network : system.getNetworkList()) {
-//                //Step 2-a: Check against each enterprise
-//                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-//                    userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
-//                    if (userAccount == null) {
-//                        //Step3: Check against each organization inside that enterprise
-//                        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-//                            userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
-//
-//                            if (userAccount != null) {
-//                                //    System.out.println("organi"+ organization.getName());
-//                                inEnterprise = enterprise;
-//                                inOrganization = organization;
-//                                inNetwork = network;
-//                                break;
-//                            }
-//                        }
-//                    } else {
-//                        inEnterprise = enterprise;
-//                        inNetwork = network;
-//                        break;
-//                    }
-//                    if (inOrganization != null) {
-//                        break;
-//                    }
-//                }
-//                if (inEnterprise != null) {
-//                    break;
-//                }
-//            }
-//        }
-
-//        if (userAccount == null) {
-//            JOptionPane.showMessageDialog(null, "Please Enter Valid Credentails!");
-//            return;
-//        } else {
-//            CardLayout layout = (CardLayout) Container.getLayout();
-//            Container.add("workArea", userAccount.getRole().createWorkArea(Container, userAccount, inOrganization, inEnterprise, inNetwork, system));
-//            layout.next(Container);
-//        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnLogoutMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutMainActionPerformed
@@ -247,25 +193,22 @@ public class MainJFrame extends javax.swing.JFrame {
 
         txtUserName.setText("");
         txtPassword.setText("");
-        
-        Container.removeAll();
-        JPanel blankJP = new JPanel();
-        Container.add("blank", blankJP);
-        CardLayout crdLyt = (CardLayout) Container.getLayout();
-        crdLyt.next(Container);
+     
+        TactTeamworkarea admininteraface = new TactTeamworkarea(user, con);
+        jSplitPane1.remove(jSplitPane1.getRightComponent());
         
         try{ con.close(); }
         catch(Exception e) { JOptionPane.showMessageDialog(null, "Unexpected DB Close error."); }
     }//GEN-LAST:event_btnLogoutMainActionPerformed
 
     public void replaceSplitPaneChild(JComponent oldChild, JComponent newChild) {
-    JSplitPane parent = (JSplitPane) oldChild.getParent();
-    int dividerLocation = parent.getDividerLocation();
-    parent.remove(oldChild);
-    parent.add(newChild);
-    parent.setDividerLocation(dividerLocation);
-    newChild.revalidate();
-    newChild.repaint();
+        JSplitPane parent = (JSplitPane) oldChild.getParent();
+        int dividerLocation = parent.getDividerLocation();
+        parent.remove(oldChild);
+        parent.add(newChild);
+        parent.setDividerLocation(dividerLocation);
+        newChild.revalidate();
+        newChild.repaint();
     }
     
     /**

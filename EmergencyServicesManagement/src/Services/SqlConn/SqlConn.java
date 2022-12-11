@@ -21,7 +21,7 @@ public class SqlConn {
     
         try{  
             Class.forName("com.mysql.jdbc.Driver");  
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/dummy","root","password");  
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/aed","root","password");  
  
             return con;
         }

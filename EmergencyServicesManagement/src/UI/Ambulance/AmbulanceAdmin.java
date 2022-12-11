@@ -5,7 +5,7 @@
 package UI.Ambulance;
 
 import Services.UserAccount.UserAccount;
-
+import java.sql.*;
 /**
  *
  * @author Anirudh
@@ -13,12 +13,14 @@ import Services.UserAccount.UserAccount;
 public class AmbulanceAdmin extends javax.swing.JPanel {
 
     private UserAccount user;
+    private Connection con;
     /**
      * Creates new form HospitalAdmin
      */
-    public AmbulanceAdmin(UserAccount user) {
+    public AmbulanceAdmin(UserAccount user, Connection con) {
         initComponents();
         this.user = user;
+        this.con = con;
     }
 
     /**

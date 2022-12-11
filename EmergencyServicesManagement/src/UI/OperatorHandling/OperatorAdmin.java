@@ -5,6 +5,7 @@
 package UI.OperatorHandling;
 
 import Services.UserAccount.UserAccount;
+import java.sql.*;
 
 /**
  *
@@ -13,12 +14,15 @@ import Services.UserAccount.UserAccount;
 public class OperatorAdmin extends javax.swing.JPanel {
 
     UserAccount user;
+    Connection con;
+    
     /**
      * Creates new form OperatorAdmin
      */
-    public OperatorAdmin(UserAccount user) {
+    public OperatorAdmin(UserAccount user, Connection con) {
         initComponents();
         user = new UserAccount();
+        this.con = con;
     }
 
     /**

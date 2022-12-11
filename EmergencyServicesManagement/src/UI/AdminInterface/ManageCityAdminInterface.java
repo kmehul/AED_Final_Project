@@ -148,7 +148,6 @@ public class ManageCityAdminInterface extends javax.swing.JPanel {
         
         SystemAdminInterface cityInt = new SystemAdminInterface(user, con);
         new MainJFrame().replaceSplitPaneChild(this, cityInt);
-
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnSubmitCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitCityActionPerformed

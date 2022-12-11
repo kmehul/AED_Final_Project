@@ -5,6 +5,7 @@
 package UI.DisasterManagement;
 
 import Services.UserAccount.UserAccount;
+import java.sql.*;
 
 /**
  *
@@ -12,13 +13,16 @@ import Services.UserAccount.UserAccount;
  */
 public class TactTeamworkarea extends javax.swing.JPanel {
 
-    UserAccount user;
+    private UserAccount user;
+    private Connection con;
+    
     /**
      * Creates new form TactTeamOfficial
      */
-    public TactTeamworkarea(UserAccount user) {
+    public TactTeamworkarea(UserAccount user, Connection con) {
         initComponents();
         this.user = user;
+        this.con = con;
     }
 
     /**

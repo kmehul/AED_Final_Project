@@ -4,17 +4,22 @@
  */
 package UI.Ambulance;
 
+import Services.UserAccount.UserAccount;
+
 /**
  *
  * @author tanujverma
  */
 public class Ambulance_work_queue extends javax.swing.JPanel {
 
+    UserAccount user;
+            
     /**
      * Creates new form Ambulance_work_queue
      */
-    public Ambulance_work_queue() {
+    public Ambulance_work_queue(UserAccount user) {
         initComponents();
+        this.user = user;
     }
 
     /**

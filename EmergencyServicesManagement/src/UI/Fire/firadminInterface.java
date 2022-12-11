@@ -4,17 +4,26 @@
  */
 package UI.Fire;
 
+import Services.UserAccount.UserAccount;
+
 /**
  *
  * @author tanujverma
  */
 public class firadminInterface extends javax.swing.JPanel {
 
+    UserAccount user;
+    
     /**
      * Creates new form firadminInterface
      */
-    public firadminInterface() {
+//<<<<<<< Updated upstream:EmergencyServicesManagement/src/UI/Fire/firadminInterface.java
+//    public firadminInterface() {
+//=======
+    public firadminInterface(UserAccount user) {
+//>>>>>>> Stashed changes:EmergencyServicesManagement/src/UI/Fire/FireAdminInterface.java
         initComponents();
+        this.user = user;
     }
 
     /**

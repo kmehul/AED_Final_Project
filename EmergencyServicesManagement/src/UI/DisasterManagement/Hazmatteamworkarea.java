@@ -4,17 +4,22 @@
  */
 package UI.DisasterManagement;
 
+import Services.UserAccount.UserAccount;
+
 /**
  *
  * @author Anirudh
  */
 public class Hazmatteamworkarea extends javax.swing.JPanel {
 
+    UserAccount user;
+            
     /**
      * Creates new form HazmatOfficial
      */
-    public Hazmatteamworkarea() {
+    public Hazmatteamworkarea(UserAccount user) {
         initComponents();
+        this.user = user;
     }
 
     /**

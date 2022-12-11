@@ -6,6 +6,12 @@ package UI.AdminInterface;
 
 import javax.swing.JOptionPane;
 import Constants.CustomValidations;
+import Services.City.City;
+import Services.UserAccount.UserAccount;
+import java.sql.*;  
+import java.awt.CardLayout;
+import java.awt.Component;
+
 
 /**
  *
@@ -13,11 +19,16 @@ import Constants.CustomValidations;
  */
 public class ManageEnterpriseInterface extends javax.swing.JPanel {
 
+    Connection con;
+    UserAccount user;
+    
     /**
      * Creates new form ManageEnterpriseInterface
      */
-    public ManageEnterpriseInterface() {
+    public ManageEnterpriseInterface(UserAccount user, Connection con) {
         initComponents();
+        this.con = con;
+        this.user = user;
     }
 
     /**
@@ -62,6 +73,16 @@ public class ManageEnterpriseInterface extends javax.swing.JPanel {
         lblCity.setText("City:");
 
         cdCity.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cdCity.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cdCityItemStateChanged(evt);
+            }
+        });
+        cdCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cdCityActionPerformed(evt);
+            }
+        });
 
         lblEnterpriseName.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         lblEnterpriseName.setText("Name:");
@@ -75,7 +96,7 @@ public class ManageEnterpriseInterface extends javax.swing.JPanel {
         lblEnterpriseType.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         lblEnterpriseType.setText("Type:");
 
-        cbEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbEnterpriseType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Law Enforcement", "Disaster Management", "Fire Department", "Operator Handling", "Ambulance Service", " " }));
         cbEnterpriseType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbEnterpriseTypeActionPerformed(evt);
@@ -160,7 +181,7 @@ public class ManageEnterpriseInterface extends javax.swing.JPanel {
     private void btnAddEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEnterpriseActionPerformed
         
         if(!txtEnterpriseName.getText().trim().isEmpty()){
-//            Network network = (Network) cdCity.getSelectedItem();
+            City city = (City) cdCity.getSelectedItem();
 //            Enterprise.EnterpriseType type = (Enterprise.EnterpriseType) cbEnterpriseType.getSelectedItem();
 
 //            if (network == null || type == null) {
@@ -185,18 +206,15 @@ public class ManageEnterpriseInterface extends javax.swing.JPanel {
 //            }
 
             txtEnterpriseName.setText("");
-        }else{
+        }else
             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
     }//GEN-LAST:event_btnAddEnterpriseActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 //        userProcessContainer.remove(this);
 //        Component[] componentArray = userProcessContainer.getComponents();
 //        Component component = componentArray[componentArray.length - 1];
-//        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
-//        sysAdminwjp.populateTree();
-//
+//        SystemAdminInterface sysAdminwjp = (SystemAdminInterface) component;
 //        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
 //        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
@@ -204,6 +222,14 @@ public class ManageEnterpriseInterface extends javax.swing.JPanel {
     private void cbEnterpriseTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEnterpriseTypeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbEnterpriseTypeActionPerformed
+
+    private void cdCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdCityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cdCityActionPerformed
+
+    private void cdCityItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cdCityItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cdCityItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

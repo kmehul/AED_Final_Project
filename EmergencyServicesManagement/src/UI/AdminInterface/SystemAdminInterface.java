@@ -4,7 +4,15 @@
  */
 package UI.AdminInterface;
 
+import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
+
 import java.awt.CardLayout;
+import java.awt.FlowLayout;
+import javax.swing.JPanel;
+import java.sql.*;  
+import javax.swing.GroupLayout;
+import javax.swing.JFrame;
 
 /**
  *
@@ -12,11 +20,19 @@ import java.awt.CardLayout;
  */
 public class SystemAdminInterface extends javax.swing.JPanel {
 
+    JPanel userProcessContainer;
+    Connection con;
+    UserAccount user;
+    
     /**
      * Creates new form SystemAdminInterface
      */
-    public SystemAdminInterface() {
+    public SystemAdminInterface(UserAccount user, Connection con) {
         initComponents();
+//        this.userProcessContainer = userProcessContainer;
+        this.user = user;
+        this.con = con;
+        this.userProcessContainer = userProcessContainer;
     }
 
     /**
@@ -89,30 +105,22 @@ public class SystemAdminInterface extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAdminActionPerformed
-        // TODO add your handling code here:
+        // TODO add fyour handling code here:
         
-        ManageEnterpriseAdminInterface manageEnterpriseAdminInterface = new ManageEnterpriseAdminInterface(/*userProcessContainer, system*/);
-//        userProcessContainer.add("manageEnterpriseAdminJPanel", manageEnterpriseAdminJPanel);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        ManageEnterpriseAdminInterface manageEnterpriseAdminInterface = new ManageEnterpriseAdminInterface(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, manageEnterpriseAdminInterface);
     }//GEN-LAST:event_btnManageAdminActionPerformed
 
     private void btnManageEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEnterpriseActionPerformed
-          // TODO add your handling code here:
-          
-          ManageEnterpriseInterface manageEnterpriseInterface = new ManageEnterpriseInterface(/*userProcessContainer, system*/);
-//        userProcessContainer.add("manageEnterpriseJPanel", manageEnterpriseJPanel);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        // TODO add your handling code here:      
+        ManageEnterpriseInterface manageEnterpriseInterface = new ManageEnterpriseInterface(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, manageEnterpriseInterface);
     }//GEN-LAST:event_btnManageEnterpriseActionPerformed
 
     private void btnManageCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCityActionPerformed
         // TODO add your handling code here:
-        
-        ManageCityAdminInterface manageCityAdminInterface = new ManageCityAdminInterface(/*userProcessContainer, system*/);
-//        userProcessContainer.add("manageNetworkJPanel", manageNetworkJPanel);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        ManageCityAdminInterface cityInt = new ManageCityAdminInterface(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, cityInt);
     }//GEN-LAST:event_btnManageCityActionPerformed
 
 

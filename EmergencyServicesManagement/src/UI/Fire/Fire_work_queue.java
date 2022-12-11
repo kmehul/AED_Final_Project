@@ -4,17 +4,22 @@
  */
 package UI.Fire;
 
+import Services.UserAccount.UserAccount;
+
 /**
  *
  * @author tanujverma
  */
 public class Fire_work_queue extends javax.swing.JPanel {
 
+    UserAccount user; 
+    
     /**
      * Creates new form Fire_work_queue
      */
-    public Fire_work_queue() {
+    public Fire_work_queue(UserAccount user) {
         initComponents();
+        this.user = user;
     }
 
     /**

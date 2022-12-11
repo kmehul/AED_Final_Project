@@ -4,17 +4,22 @@
  */
 package UI.Police;
 
+import Services.UserAccount.UserAccount;
+
 /**
  *
  * @author tanujverma
  */
 public class Police_Admin extends javax.swing.JPanel {
 
+    UserAccount user;
+    
     /**
      * Creates new form Police_Admin
      */
-    public Police_Admin() {
+    public Police_Admin(UserAccount user) {
         initComponents();
+        this.user = new UserAccount();
     }
 
     /**

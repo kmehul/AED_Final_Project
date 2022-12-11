@@ -12,13 +12,21 @@ import java.util.ArrayList;
  */
 public class UserAccount {
     
-    private String firstName;
-    private String lastName;
+    private int id;
     private String userName;
     private String password;
-//    private Employee employee;
     private String role;
+    private String name;
 
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getRole() {
         return role;
     }
@@ -59,42 +67,14 @@ public class UserAccount {
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-//
-//    public Role getRole() {
-//        return role;
-//    }
-//
-//    public void setEmployee(Employee employee) {
-//        this.employee = employee;
-//    }
-//
-//    public void setRole(Role role) {
-//        this.role = role;
-//    }
-//
-//    public Employee getEmployee() {
-//        return employee;
-//    }
-//
-//    public WorkQueue getWorkQueue() {
-//        return workQueue;
-//    }
-
+    
     @Override
     public String toString() {
         return userName;

@@ -4,6 +4,8 @@
  */
 package UI.Fire;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mehul
@@ -387,12 +389,12 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
     }//GEN-LAST:event_txtMarshalIDActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        if(!txtName.getText().equals("")){
+        //if(!txtName.getText().equals("")){
             //            Enterprise enterprise = (Enterprise) cbEnterprise.getSelectedItem();
 
             String username = txtMarshalID.getText();
             String password = String.valueOf(txtMarshalName.getPassword());
-            String name = txtName.getText();
+            //String name = txtName.getText();
 
             //            Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
             //            if (EcoSystem.checkIfUsernameIsUnique(username)) {
@@ -408,8 +410,8 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
                     //                }
 
                 //                populateTable();
-                JOptionPane.showMessageDialog(null, "Admin employee created");
-                txtName.setText("");
+                //JOptionPane.showMessageDialog(null, "Admin employee created");
+                //txtName.setText("");
                 txtMarshalID.setText("");
                 txtMarshalName.setText("");
                 //            }
@@ -419,7 +421,7 @@ public class FireMarshal_CRUD extends javax.swing.JPanel {
             //            else{
                 //                JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
                 //            }
-        }
+        //}
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnSubmit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmit2ActionPerformed

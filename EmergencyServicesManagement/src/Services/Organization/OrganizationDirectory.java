@@ -8,6 +8,6 @@ package Services.Organization;
  *
  * @author Anirudh
  */
-public class DHSServices {
+public class OrganizationDirectory {
     
 }

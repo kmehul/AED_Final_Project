@@ -4,17 +4,20 @@
  */
 package UI.DisasterManagement;
 
+import Services.UserAccount.UserAccount;
+
 /**
  *
  * @author tanujverma
  */
 public class DM_work_queue extends javax.swing.JPanel {
-
+    UserAccount user;
     /**
      * Creates new form DM_work_queue
      */
-    public DM_work_queue() {
+    public DM_work_queue(UserAccount user) {
         initComponents();
+        this.user = user;
     }
 
     /**

@@ -4,17 +4,26 @@
  */
 package UI.Police;
 
+import Services.UserAccount.UserAccount;
+
 /**
  *
  * @author tanujverma
  */
-public class Police_work_queue_ extends javax.swing.JPanel {
+public class Police_work_queue extends javax.swing.JPanel {
 
+    UserAccount user;
+    
     /**
      * Creates new form Police_work_queue_
-     */
-    public Police_work_queue_() {
+//     */
+//<<<<<<< Updated upstream:EmergencyServicesManagement/src/UI/Police/Police_work_queue_.java
+//    public Police_work_queue_() {
+//=======
+    public Police_work_queue(UserAccount user) {
+//>>>>>>> Stashed changes:EmergencyServicesManagement/src/UI/Police/Police_work_queue.java
         initComponents();
+        this.user = user;
     }
 
     /**

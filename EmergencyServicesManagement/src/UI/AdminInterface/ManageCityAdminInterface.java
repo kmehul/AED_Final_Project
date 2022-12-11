@@ -4,17 +4,34 @@
  */
 package UI.AdminInterface;
 
+import Services.City.City;
+import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
+import java.awt.CardLayout;
+import java.awt.Component;
+import static java.time.Clock.system;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import java.sql.*;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Anirudh
  */
 public class ManageCityAdminInterface extends javax.swing.JPanel {
 
+    JPanel userProcessContainer;
+    Connection con;
+    UserAccount user;
+    
     /**
      * Creates new form ManageCityAdminInterface11
      */
-    public ManageCityAdminInterface() {
+    public ManageCityAdminInterface(UserAccount user, Connection con) {
         initComponents();
+        this.con = con;
+        this.user = user;
     }
 
     /**
@@ -127,26 +144,45 @@ public class ManageCityAdminInterface extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        //        userProcessContainer.remove(this);
-        //        Component[] componentArray = userProcessContainer.getComponents();
-        //        Component component = componentArray[componentArray.length - 1];
-        //        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
-        //        sysAdminwjp.populateTree();
-        //        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        //        layout.previous(userProcessContainer);
+        txtCityName.setText("");
+        
+        SystemAdminInterface cityInt = new SystemAdminInterface(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, cityInt);
+
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnSubmitCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitCityActionPerformed
-        //
-        //        String name = txtCityName.getText();
-        //        if(!name.equals("")){
-            //            Network network = system.createAndAddNetwork();
-            //            network.setName(name);
-            //
-            //            populateNetworkTable();
-            //        }else{
-            //            JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
-            //        }
+        
+        String name = txtCityName.getText();
+//       try {
+//            Connection conn = DriverManager.getConnection(url, user, password);
+// 
+//            String sql = "INSERT INTO person (first_name, last_name, photo) values (?, ?, ?)";
+//            PreparedStatement statement = conn.prepareStatement(sql);
+//            statement.setString(1, "Tom");
+//            statement.setString(2, "Eagar");
+//            InputStream inputStream = new FileInputStream(new File(filePath));
+// 
+//            statement.setBlob(3, inputStream);
+// 
+//            int row = statement.executeUpdate();
+//            if (row > 0) {
+//                System.out.println("A contact was inserted with photo image.");
+//            }
+//            conn.close();
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }  
+       
+        if(!name.equals("")){
+            
+//            City city = system.createAndAddNetwork();
+//            city.setName(name);
+            
+            populateCityTable();
+        }
+        else 
+            JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnSubmitCityActionPerformed
 
     private void txtCityNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCityNameKeyPressed
@@ -158,6 +194,16 @@ public class ManageCityAdminInterface extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCityNameActionPerformed
 
+    private void populateCityTable() {
+        DefaultTableModel model = (DefaultTableModel) tblManageCity.getModel();
+
+//        model.setRowCount(0);
+//        for (City city : system.getNetworkList()) {
+//            Object[] row = new Object[1];
+//            row[0] = city;
+//            model.addRow(row);
+//        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

@@ -8,6 +8,45 @@ package Services.Enterprise;
  *
  * @author Anirudh
  */
-public class Enterprise {
+public class Enterprise /*extends Organization*/ {
+       
+    private EnterpriseType enterpriseType;
+    //private OrganizationDirectory organizationDirectory;
+    
+    public Enterprise(String name, EnterpriseType type) {
+        //super(name);
+        this.enterpriseType = type;
+        //organizationDirectory = new OrganizationDirectory();
+    }
+    
+    public enum EnterpriseType{
+        
+        PoliceEnterprise("Police Enterprise"),
+        HospitalEnterprise("Hospital Enterprise"),
+        GovernmentEnterprise("Government Enterprise");
+        
+        private String value;
+
+        private EnterpriseType(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
+    }
+
+    public EnterpriseType getEnterpriseType() {
+        return enterpriseType;
+    }
+
+//    public OrganizationDirectory getOrganizationDirectory() {
+//        return organizationDirectory;
+//    }
     
 }

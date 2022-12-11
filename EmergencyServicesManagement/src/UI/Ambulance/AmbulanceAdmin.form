@@ -79,6 +79,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Manage Ambulance Work Queue"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageAmbulanceActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAmbulanceAnalysis">
       <Properties>
@@ -87,6 +90,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="REPORT"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAmbulanceAnalysisActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

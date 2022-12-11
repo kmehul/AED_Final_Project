@@ -5,6 +5,8 @@
 package UI.Ambulance;
 
 import Services.UserAccount.UserAccount;
+import UI.AdminInterface.ManageCityAdminInterface;
+import UI.MainJFrame;
 import java.sql.*;
 /**
  *
@@ -51,9 +53,19 @@ public class AmbulanceAdmin extends javax.swing.JPanel {
 
         btnManageAmbulance.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         btnManageAmbulance.setText("Manage Ambulance Work Queue");
+        btnManageAmbulance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageAmbulanceActionPerformed(evt);
+            }
+        });
 
         btnAmbulanceAnalysis.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         btnAmbulanceAnalysis.setText("REPORT");
+        btnAmbulanceAnalysis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAmbulanceAnalysisActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -89,7 +101,19 @@ public class AmbulanceAdmin extends javax.swing.JPanel {
 
     private void btnAddAmbulanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAmbulanceActionPerformed
         // TODO add your handling code here:
+        AddNewAmbulanceEmployee panel = new AddNewAmbulanceEmployee(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
     }//GEN-LAST:event_btnAddAmbulanceActionPerformed
+
+    private void btnAmbulanceAnalysisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAmbulanceAnalysisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAmbulanceAnalysisActionPerformed
+
+    private void btnManageAmbulanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAmbulanceActionPerformed
+        // TODO add your handling code here:
+        AMBULANCE_REPORTS panel = new AMBULANCE_REPORTS(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
+    }//GEN-LAST:event_btnManageAmbulanceActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

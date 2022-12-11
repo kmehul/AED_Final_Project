@@ -4,17 +4,27 @@
  */
 package UI.Ambulance;
 
+
+import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
+import java.sql.*;
+
 /**
  *
  * @author tanujverma
  */
 public class report extends javax.swing.JPanel {
+private Connection con;
+private UserAccount user;
 
     /**
      * Creates new form report
      */
-    public report() {
+    public report(UserAccount user, Connection con) {
         initComponents();
+        
+	this.user = user;
+this.con = con;
     }
 
     /**
@@ -62,6 +72,11 @@ public class report extends javax.swing.JPanel {
         jButton1.setText("SAVE");
 
         jButton2.setText("BACK");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         txtOfficerComments.setColumns(20);
         txtOfficerComments.setRows(5);
@@ -131,17 +146,14 @@ public class report extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel12)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(txtAddress1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel11)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtGunType, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(232, 232, 232)))))
-                .addContainerGap(139, Short.MAX_VALUE))
+                                .addComponent(jLabel12)
+                                .addGap(36, 36, 36)
+                                .addComponent(txtAddress1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtGunType, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,8 +181,8 @@ public class report extends javax.swing.JPanel {
                     .addComponent(jLabel12)
                     .addComponent(txtAddress1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtGunType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -191,6 +203,12 @@ public class report extends javax.swing.JPanel {
                 .addGap(41, 41, 41))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+                amb_personal_work_queue panel = new amb_personal_work_queue(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

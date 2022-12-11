@@ -16,27 +16,28 @@ create table user_account (
 );
 
 #
-# Table Structure for City
+# Table Structure for city
 #
-DROP TABLE IF EXISTS City;
+DROP TABLE IF EXISTS city;
 
-CREATE TABLE City (
-  City_ID int primary key not null auto_increment,
-  City_Name varchar(100) not null
+CREATE TABLE city (
+  city_id int primary key not null auto_increment,
+  city_name varchar(100) not null
 );
 
 #
-# Table Structure for Enterprise
+# Table Structure for enterprise
 #
-DROP TABLE IF EXISTS Enterprise;
+DROP TABLE IF EXISTS enterprise;
 
-CREATE TABLE Enterprise (
-  Enterprise_Id int primary key not null auto_increment,
-  city_id varchar(100) not null,
-  Enterprise_Name varchar(255) not null,
-  user_Id varchar(255) not null
+CREATE TABLE enterprise (
+  enterprise_id int primary key not null auto_increment,
+  enterprise_name varchar(255) not null,
+  city_id int not null,
+  user_id int not null,
+  constraint enterprise_fk1 foreign key (city_id) references city (city_id),
+  constraint enterprise_fk2 foreign key (user_id) references user_account (user_id)
 );
-
 
 #
 # TABLE STRUCTURE FOR: victim
@@ -239,10 +240,3 @@ insert into hazmat_report(work_id, user_id, victim_id, incident_date, material_n
 insert into tactical_report(work_id, user_id, victim_id, incident_date, material_name, incident_address, casualties, comments)
 	values
 		(4,11,4,'2022-12-10','RPG','113 Camel St, Boston, MA, 02146',1,'Developing Hostage situation with multiple hostages, call made by a hostage and 1 casualty so far.');
-        
-
-insert into user_account(user_name,user_username,user_password,user_role)
-	values
-		('AmbAdmin','ambadmin','ambadmin','aba');
-        
-        select * from user_account 

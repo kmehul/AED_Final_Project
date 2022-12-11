@@ -4,10 +4,20 @@
  */
 package Services.Enterprise;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Anirudh
  */
 public class EnterpriseDirectory {
-    
+    private ArrayList<Enterprise> enterpriseList;
+
+    public ArrayList<Enterprise> getEnterpriseList() {
+        return enterpriseList;
+    }
+
+    public void setEnterpriseList(ArrayList<Enterprise> enterpriseList) {
+        this.enterpriseList = enterpriseList;
+    }
 }

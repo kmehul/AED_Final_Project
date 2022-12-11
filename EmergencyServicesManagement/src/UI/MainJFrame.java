@@ -15,15 +15,13 @@ import UI.DisasterManagement.TactTeamworkarea;
 import UI.Fire.Fire_work_queue;
 import UI.Fire.firadminInterface;
 import UI.OperatorHandling.OperatorAdmin;
-import UI.OperatorHandling.Operator_admin_queue;
+import UI.OperatorHandling.OperatorMasterWorkQueue;
 import UI.Police.Police_Admin;
 import UI.Police.Police_work_queue;
 import java.sql.*;  
-import java.awt.CardLayout;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 /**
@@ -147,7 +145,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 jSplitPane1.setRightComponent(admininteraface);
                 break;}             
             case "ope":{
-                Operator_admin_queue admininteraface = new Operator_admin_queue(user, con);
+                OperatorMasterWorkQueue admininteraface = new OperatorMasterWorkQueue(user, con);
                 jSplitPane1.setRightComponent(admininteraface);
                 break;}
             case "fme":{

@@ -5,6 +5,7 @@
 package UI.Fire;
 
 import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
 import java.sql.*;
 /**
  *
@@ -44,9 +45,14 @@ public class firadminInterface extends javax.swing.JPanel {
 
         btnManageFireMarshal.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnManageFireMarshal.setText("Manage Fire Marshal");
+        btnManageFireMarshal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageFireMarshalActionPerformed(evt);
+            }
+        });
 
         btnAssignFire.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        btnAssignFire.setText("Manage Fire Work Queue");
+        btnAssignFire.setText(" Fire Cases");
         btnAssignFire.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignFireActionPerformed(evt);
@@ -78,7 +84,7 @@ public class firadminInterface extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAnalysis, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAssignFire, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(273, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,17 +98,27 @@ public class firadminInterface extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReports)
                     .addComponent(btnAnalysis))
-                .addGap(150, 150, 150))
+                .addContainerGap(242, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignFireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignFireActionPerformed
         // TODO add your handling code here:
+        master_work_queue panel = new master_work_queue(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
     }//GEN-LAST:event_btnAssignFireActionPerformed
 
     private void btnReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportsActionPerformed
         // TODO add your handling code here:
+        report_history panel = new report_history(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
     }//GEN-LAST:event_btnReportsActionPerformed
+
+    private void btnManageFireMarshalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageFireMarshalActionPerformed
+        // TODO add your handling code here: --
+        FireMarshal_CRUD panel = new FireMarshal_CRUD(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
+    }//GEN-LAST:event_btnManageFireMarshalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

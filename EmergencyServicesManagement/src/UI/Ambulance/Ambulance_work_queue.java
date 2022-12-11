@@ -5,6 +5,7 @@
 package UI.Ambulance;
 
 import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
 import java.sql.*;
 
 /**
@@ -86,10 +87,15 @@ public class Ambulance_work_queue extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        Ambulance_master_qeue panel = new Ambulance_master_qeue(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        amb_personal_work_queue panel = new amb_personal_work_queue(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
     }//GEN-LAST:event_jButton3ActionPerformed
 
 

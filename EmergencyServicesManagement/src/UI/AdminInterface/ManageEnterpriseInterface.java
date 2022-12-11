@@ -20,8 +20,8 @@ import java.awt.Component;
  */
 public class ManageEnterpriseInterface extends javax.swing.JPanel {
 
-    Connection con;
-    UserAccount user;
+    private Connection con;
+    private UserAccount user;
     
     /**
      * Creates new form ManageEnterpriseInterface

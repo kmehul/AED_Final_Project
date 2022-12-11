@@ -49,12 +49,7 @@ public class Police_Admin extends javax.swing.JPanel {
         });
 
         btnAssignFire.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        btnAssignFire.setText("Manage Police Work Queue");
-        btnAssignFire.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssignFireActionPerformed(evt);
-            }
-        });
+        btnAssignFire.setText(" Police Work Queue");
 
         btnReports.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnReports.setText("Reports");
@@ -114,10 +109,6 @@ public class Police_Admin extends javax.swing.JPanel {
     private void btnManageFireMarshalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageFireMarshalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnManageFireMarshalActionPerformed
-
-    private void btnAssignFireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignFireActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAssignFireActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

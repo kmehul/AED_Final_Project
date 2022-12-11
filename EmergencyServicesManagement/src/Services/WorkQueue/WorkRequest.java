@@ -11,71 +11,52 @@ import java.util.Date;
  * @author Anirudh
  */
 public abstract class WorkRequest {
-    private int workId;
-    private int operatorId;
-    private String initDesc;
-    private String assignedToDept;
-    private char status;
-    private Date recievedDate;
-    private Date resolvedDate;
+    private int work_id;
+    private int user_id;
+    private int victim_id;
+    private String assign_to;
+    private String case_status;
 
-    public WorkRequest(){
-        recievedDate = new Date();
+    public int getWork_id() {
+        return work_id;
     }
+
+    public void setWork_id(int work_id) {
+        this.work_id = work_id;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public int getVictim_id() {
+        return victim_id;
+    }
+
+    public void setVictim_id(int victim_id) {
+        this.victim_id = victim_id;
+    }
+
+    public String getAssign_to() {
+        return assign_to;
+    }
+
+    public void setAssign_to(String assign_to) {
+        this.assign_to = assign_to;
+    }
+
+    public String getCase_status() {
+        return case_status;
+    }
+
+    public void setCase_status(String case_status) {
+        this.case_status = case_status;
+    }
+    
         
-    public int getWorkId() {
-        return workId;
-    }
-
-    public void setWorkId(int workId) {
-        this.workId = workId;
-    }
-
-    public int getOperatorId() {
-        return operatorId;
-    }
-
-    public void setOperatorId(int operatorId) {
-        this.operatorId = operatorId;
-    }
-
-    public String getInitDesc() {
-        return initDesc;
-    }
-
-    public void setInitDesc(String initDesc) {
-        this.initDesc = initDesc;
-    }
-
-    public String getassignedToDept() {
-        return assignedToDept;
-    }
-
-    public void setassignedToDept(String assignedToDept) {
-        this.assignedToDept = assignedToDept;
-    }
-
-    public char getStatus() {
-        return status;
-    }
-
-    public void setStatus(char status) {
-        this.status = status;
-    }
-
-    public Date getRecievedDate() {
-        return recievedDate;
-    }
-
-    public void setRecievedDate(Date recievedDate) {
-        this.recievedDate = recievedDate;
-    }
-
-    public Date getResolvedDate() {
-        return resolvedDate;
-    }
-
-    public void setResolvedDate(Date resolvedDate) {
-        this.resolvedDate = resolvedDate;
-    }   
+        
 }

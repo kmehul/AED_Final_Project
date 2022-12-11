@@ -5,21 +5,22 @@
 package UI.DisasterManagement;
 
 import Services.UserAccount.UserAccount;
-
+import java.sql.*;
 /**
  *
  * @author Anirudh
  */
 public class Hazmatteamworkarea extends javax.swing.JPanel {
 
-    UserAccount user;
-            
+    private UserAccount user;
+    private Connection con;
     /**
      * Creates new form HazmatOfficial
      */
-    public Hazmatteamworkarea(UserAccount user) {
+    public Hazmatteamworkarea(UserAccount user, Connection con) {
         initComponents();
         this.user = user;
+        this.con = con;
     }
 
     /**

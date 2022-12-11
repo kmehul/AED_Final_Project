@@ -5,6 +5,7 @@
 package UI.Police;
 
 import Services.UserAccount.UserAccount;
+import java.sql.*;
 
 /**
  *
@@ -12,16 +13,14 @@ import Services.UserAccount.UserAccount;
  */
 public class Police_work_queue extends javax.swing.JPanel {
 
-    UserAccount user;
+    private UserAccount user;
+    private Connection con;
     
     /**
      * Creates new form Police_work_queue_
-//     */
-//<<<<<<< Updated upstream:EmergencyServicesManagement/src/UI/Police/Police_work_queue_.java
-//    public Police_work_queue_() {
-//=======
-    public Police_work_queue(UserAccount user) {
-//>>>>>>> Stashed changes:EmergencyServicesManagement/src/UI/Police/Police_work_queue.java
+     */
+    public Police_work_queue(UserAccount user, Connection con) {
+
         initComponents();
         this.user = user;
     }

@@ -5,21 +5,22 @@
 package UI.Fire;
 
 import Services.UserAccount.UserAccount;
-
+import  java.sql.*;
 /**
  *
  * @author tanujverma
  */
 public class Fire_work_queue extends javax.swing.JPanel {
 
-    UserAccount user; 
-    
+    private UserAccount user; 
+    private Connection con;
     /**
      * Creates new form Fire_work_queue
      */
-    public Fire_work_queue(UserAccount user) {
+    public Fire_work_queue(UserAccount user, Connection con) {
         initComponents();
         this.user = user;
+        this.con = con;
     }
 
     /**

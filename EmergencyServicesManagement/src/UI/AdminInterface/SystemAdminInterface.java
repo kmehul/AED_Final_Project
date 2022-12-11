@@ -106,7 +106,6 @@ public class SystemAdminInterface extends javax.swing.JPanel {
 
     private void btnManageAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAdminActionPerformed
         // TODO add fyour handling code here:
-        
         ManageEnterpriseAdminInterface manageEnterpriseAdminInterface = new ManageEnterpriseAdminInterface(user, con);
         new MainJFrame().replaceSplitPaneChild(this, manageEnterpriseAdminInterface);
     }//GEN-LAST:event_btnManageAdminActionPerformed

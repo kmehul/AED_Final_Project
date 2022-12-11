@@ -5,6 +5,7 @@
 package UI.OperatorHandling;
 
 import Services.UserAccount.UserAccount;
+import java.sql.*;
 
 /**
  *
@@ -12,13 +13,16 @@ import Services.UserAccount.UserAccount;
  */
 public class Operator_admin_queue extends javax.swing.JFrame {
 
-    UserAccount user;
+    private UserAccount user;
+    private Connection con;
+    
     /**
      * Creates new form Operator_admin_queue
      */
-    public Operator_admin_queue(UserAccount user) {
+    public Operator_admin_queue(UserAccount user, Connection con) {
         initComponents();
         this.user = user;
+        this.con = con;
     }
 
     /**

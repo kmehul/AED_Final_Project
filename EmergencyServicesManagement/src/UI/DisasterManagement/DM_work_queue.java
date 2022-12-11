@@ -5,19 +5,22 @@
 package UI.DisasterManagement;
 
 import Services.UserAccount.UserAccount;
-
+import java.sql.*;
 /**
  *
  * @author tanujverma
  */
 public class DM_work_queue extends javax.swing.JPanel {
-    UserAccount user;
+    private UserAccount user;
+    private Connection con;
+    
     /**
      * Creates new form DM_work_queue
      */
-    public DM_work_queue(UserAccount user) {
+    public DM_work_queue(UserAccount user, Connection con) {
         initComponents();
         this.user = user;
+        this.con = con;
     }
 
     /**

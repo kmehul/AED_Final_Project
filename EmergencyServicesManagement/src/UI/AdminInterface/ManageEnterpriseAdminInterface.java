@@ -6,6 +6,7 @@ package UI.AdminInterface;
 
 import Constants.CustomValidations;
 import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.sql.*;  
@@ -208,13 +209,12 @@ public class ManageEnterpriseAdminInterface extends javax.swing.JPanel {
     }//GEN-LAST:event_txtAdminNameKeyPressed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-//        userProcessContainer.remove(this);
-//        Component[] componentArray = userProcessContainer.getComponents();
-//        Component component = componentArray[componentArray.length - 1];
-//        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
-//        sysAdminwjp.populateTree();
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.previous(userProcessContainer);
+        txtAdminName.setText("");
+        pwdPassword.setText("");
+        txtUsername.setText("");
+        
+        SystemAdminInterface cityInt = new SystemAdminInterface(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, cityInt);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed

@@ -4,17 +4,26 @@
  */
 package UI.OperatorHandling;
 
+import Services.UserAccount.UserAccount;
+import com.mysql.jdbc.Connection;
+import java.sql.*;
+
 /**
  *
  * @author tanujverma
  */
 public class op_admin_queue extends javax.swing.JPanel {
 
+    private UserAccount user;
+    private Connection con;
+    
     /**
      * Creates new form op_admin_queue
      */
-    public op_admin_queue() {
+    public op_admin_queue(UserAccount user, Connection con) {
         initComponents();
+        this.user = user;
+        this.con = con;
     }
 
     /**

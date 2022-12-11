@@ -112,7 +112,7 @@ public class MainJFrame extends javax.swing.JFrame {
         try{
         stmt = con.createStatement();  
         rs = stmt.executeQuery("select * from user_account where user_username = '" + userName + "' and user_password = '" + password + "'");  
-        
+        rs.next();
         user.setId(rs.getInt("user_id"));
         user.setName(rs.getString("user_name"));
         user.setUserName(rs.getString("user_username"));
@@ -176,7 +176,6 @@ public class MainJFrame extends javax.swing.JFrame {
         btnLogoutMain.setEnabled(true);
         
         }catch(Exception e){
-            //sqlSystem.DisplayMessage(e.getMessage());
             JOptionPane.showMessageDialog(null, "Please Enter valid Login credentials\n" + e.getMessage());
         }
     }//GEN-LAST:event_btnLoginActionPerformed
@@ -192,11 +191,7 @@ public class MainJFrame extends javax.swing.JFrame {
         txtUserName.setText("");
         txtPassword.setText("");
      
-        TactTeamworkarea admininteraface = new TactTeamworkarea(user, con);
         jSplitPane1.remove(jSplitPane1.getRightComponent());
-        
-        try{ con.close(); }
-        catch(Exception e) { JOptionPane.showMessageDialog(null, "Unexpected DB Close error."); }
     }//GEN-LAST:event_btnLogoutMainActionPerformed
 
     public void replaceSplitPaneChild(JComponent oldChild, JComponent newChild) {

@@ -21,7 +21,7 @@ public class Police_Admin extends javax.swing.JPanel {
      */
     public Police_Admin(UserAccount user, Connection con) {
         initComponents();
-        this.user = new UserAccount();
+        this.user = user;
         this.con = con;
     }
 

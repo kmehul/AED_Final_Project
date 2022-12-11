@@ -8,6 +8,6 @@ package Services.WorkQueue;
  *
  * @author Anirudh
  */
-public class DhsRequest extends WorkRequest{
+public class TacticalRequest extends WorkRequest{
     
 }

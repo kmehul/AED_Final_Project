@@ -7,6 +7,7 @@ package UI.OperatorHandling;
 import Constants.CustomValidations;
 import javax.swing.JOptionPane;
 import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
 import java.sql.*;
 
 /**
@@ -399,6 +400,8 @@ public class Operatorcrud extends javax.swing.JPanel {
 
     private void btnBACKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBACKActionPerformed
         // TODO add your handling code here:
+        OperatorAdmin panel = new OperatorAdmin(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
     }//GEN-LAST:event_btnBACKActionPerformed
 
 

@@ -8,4 +8,6 @@ This system has a database which stores the data for incidents and the victims s
 
 <img src="AED_Project_Object_Diagram.png" alt="Object Model">
 
+___________________________________________________________________________________________________________________________________________________________
+
 <img src="aed_project_erd.png" alt="ER Diagram">

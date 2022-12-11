@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import Constants.CustomValidations;
 import Services.City.City;
 import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
 import java.sql.*;  
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -19,8 +20,8 @@ import java.awt.Component;
  */
 public class ManageEnterpriseInterface extends javax.swing.JPanel {
 
-    Connection con;
-    UserAccount user;
+    private Connection con;
+    private UserAccount user;
     
     /**
      * Creates new form ManageEnterpriseInterface
@@ -211,12 +212,9 @@ public class ManageEnterpriseInterface extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAddEnterpriseActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-//        userProcessContainer.remove(this);
-//        Component[] componentArray = userProcessContainer.getComponents();
-//        Component component = componentArray[componentArray.length - 1];
-//        SystemAdminInterface sysAdminwjp = (SystemAdminInterface) component;
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.previous(userProcessContainer);
+        txtEnterpriseName.setText("");
+        SystemAdminInterface cityInt = new SystemAdminInterface(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, cityInt);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void cbEnterpriseTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEnterpriseTypeActionPerformed

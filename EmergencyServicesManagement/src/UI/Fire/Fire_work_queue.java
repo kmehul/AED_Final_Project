@@ -5,21 +5,23 @@
 package UI.Fire;
 
 import Services.UserAccount.UserAccount;
-
+import UI.MainJFrame;
+import  java.sql.*;
 /**
  *
  * @author tanujverma
  */
 public class Fire_work_queue extends javax.swing.JPanel {
 
-    UserAccount user; 
-    
+    private UserAccount user; 
+    private Connection con;
     /**
      * Creates new form Fire_work_queue
      */
-    public Fire_work_queue(UserAccount user) {
+    public Fire_work_queue(UserAccount user, Connection con) {
         initComponents();
         this.user = user;
+        this.con = con;
     }
 
     /**
@@ -37,7 +39,7 @@ public class Fire_work_queue extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("POLICE WORK QUEUE");
+        jLabel1.setText("FIRE CASES WORK QUEUE");
 
         jButton2.setText("SHOW MASTER WORK QUEUE");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -83,10 +85,15 @@ public class Fire_work_queue extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
+        master_work_queue panel = new master_work_queue(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        Fire_personel_work_queue panel = new Fire_personel_work_queue(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
     }//GEN-LAST:event_jButton3ActionPerformed
 
 

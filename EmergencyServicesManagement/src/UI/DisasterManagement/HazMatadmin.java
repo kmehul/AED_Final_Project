@@ -6,6 +6,9 @@ package UI.DisasterManagement;
 
 import Constants.CustomValidations;
 import javax.swing.JOptionPane;
+import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
+import java.sql.*;
 
 /**
  *
@@ -13,11 +16,16 @@ import javax.swing.JOptionPane;
  */
 public class HazMatadmin extends javax.swing.JPanel {
 
+    private Connection con;
+    private UserAccount user;
+    
     /**
      * Creates new form AddHazMAtEmployee
      */
-    public HazMatadmin() {
+    public HazMatadmin(UserAccount user, Connection con) {
         initComponents();
+        this.user = user;
+        this.con = con;
     }
 
     /**
@@ -55,7 +63,6 @@ public class HazMatadmin extends javax.swing.JPanel {
         lblUSERname = new javax.swing.JLabel();
         lblpassword = new javax.swing.JLabel();
         btnback = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         lblHazmatManageEmp.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblHazmatManageEmp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -292,8 +299,11 @@ public class HazMatadmin extends javax.swing.JPanel {
         jTabbedPane1.addTab("Add Employee", jPanel2);
 
         btnback.setText("BACK");
-
-        jButton1.setText("BACK");
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -310,10 +320,6 @@ public class HazMatadmin extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,9 +330,7 @@ public class HazMatadmin extends javax.swing.JPanel {
                     .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addGap(15, 15, 15))
+                .addGap(44, 44, 44))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -407,13 +411,18 @@ public class HazMatadmin extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_pwdPasswordActionPerformed
 
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        // TODO add your handling code here:
+        DM_work_queue panel = new DM_work_queue(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
+    }//GEN-LAST:event_btnbackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSubmit;
     private javax.swing.JButton btnSubmit2;
     private javax.swing.JButton btnback;
     private javax.swing.JButton btnsearchhazmat;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

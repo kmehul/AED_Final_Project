@@ -16,6 +16,29 @@ create table user_account (
 );
 
 #
+# Table Structure for City
+#
+DROP TABLE IF EXISTS City;
+
+CREATE TABLE City (
+  City_ID int primary key not null auto_increment,
+  City_Name varchar(100) not null
+);
+
+#
+# Table Structure for Enterprise
+#
+DROP TABLE IF EXISTS Enterprise;
+
+CREATE TABLE Enterprise (
+  Enterprise_Id int primary key not null auto_increment,
+  city_id varchar(100) not null,
+  Enterprise_Name varchar(255) not null,
+  user_Id varchar(255) not null
+);
+
+
+#
 # TABLE STRUCTURE FOR: victim
 #
 
@@ -216,3 +239,10 @@ insert into hazmat_report(work_id, user_id, victim_id, incident_date, material_n
 insert into tactical_report(work_id, user_id, victim_id, incident_date, material_name, incident_address, casualties, comments)
 	values
 		(4,11,4,'2022-12-10','RPG','113 Camel St, Boston, MA, 02146',1,'Developing Hostage situation with multiple hostages, call made by a hostage and 1 casualty so far.');
+        
+
+insert into user_account(user_name,user_username,user_password,user_role)
+	values
+		('AmbAdmin','ambadmin','ambadmin','aba');
+        
+        select * from user_account 

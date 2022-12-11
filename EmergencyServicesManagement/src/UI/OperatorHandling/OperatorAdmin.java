@@ -5,6 +5,8 @@
 package UI.OperatorHandling;
 
 import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
+import java.sql.*;
 
 /**
  *
@@ -13,12 +15,15 @@ import Services.UserAccount.UserAccount;
 public class OperatorAdmin extends javax.swing.JPanel {
 
     UserAccount user;
+    Connection con;
+    
     /**
      * Creates new form OperatorAdmin
      */
-    public OperatorAdmin(UserAccount user) {
+    public OperatorAdmin(UserAccount user, Connection con) {
         initComponents();
         user = new UserAccount();
+        this.con = con;
     }
 
     /**
@@ -56,7 +61,12 @@ public class OperatorAdmin extends javax.swing.JPanel {
         });
 
         jButton3.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        jButton3.setText("OPERATOR CRUD");
+        jButton3.setText("OPERATOR MANAGEMENT");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -99,7 +109,15 @@ public class OperatorAdmin extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        op_admin_queue panel = new op_admin_queue(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        Operatorcrud panel = new Operatorcrud(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -20,7 +20,6 @@ import javax.swing.JFrame;
  */
 public class SystemAdminInterface extends javax.swing.JPanel {
 
-    JPanel userProcessContainer;
     Connection con;
     UserAccount user;
     
@@ -32,7 +31,6 @@ public class SystemAdminInterface extends javax.swing.JPanel {
 //        this.userProcessContainer = userProcessContainer;
         this.user = user;
         this.con = con;
-        this.userProcessContainer = userProcessContainer;
     }
 
     /**
@@ -106,7 +104,6 @@ public class SystemAdminInterface extends javax.swing.JPanel {
 
     private void btnManageAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAdminActionPerformed
         // TODO add fyour handling code here:
-        
         ManageEnterpriseAdminInterface manageEnterpriseAdminInterface = new ManageEnterpriseAdminInterface(user, con);
         new MainJFrame().replaceSplitPaneChild(this, manageEnterpriseAdminInterface);
     }//GEN-LAST:event_btnManageAdminActionPerformed

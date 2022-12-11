@@ -5,6 +5,8 @@
 package UI.Police;
 
 import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
+import java.sql.*;
 
 /**
  *
@@ -12,16 +14,14 @@ import Services.UserAccount.UserAccount;
  */
 public class Police_work_queue extends javax.swing.JPanel {
 
-    UserAccount user;
+    private UserAccount user;
+    private Connection con;
     
     /**
      * Creates new form Police_work_queue_
-//     */
-//<<<<<<< Updated upstream:EmergencyServicesManagement/src/UI/Police/Police_work_queue_.java
-//    public Police_work_queue_() {
-//=======
-    public Police_work_queue(UserAccount user) {
-//>>>>>>> Stashed changes:EmergencyServicesManagement/src/UI/Police/Police_work_queue.java
+     */
+    public Police_work_queue(UserAccount user, Connection con) {
+
         initComponents();
         this.user = user;
     }
@@ -87,10 +87,14 @@ public class Police_work_queue extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        Master_workqueue panel = new Master_workqueue(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        personal_work_queue panel = new personal_work_queue(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
     }//GEN-LAST:event_jButton3ActionPerformed
 
 

@@ -4,8 +4,9 @@
  */
 package UI.Ambulance;
 
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
+import java.sql.*;
 
 /**
  *
@@ -13,8 +14,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Ambulance_master_qeue extends javax.swing.JPanel {
 
-    public Ambulance_master_qeue() {
+    private Connection con;
+    private UserAccount user;
+
+    public Ambulance_master_qeue(UserAccount user, Connection con) {
         initComponents();
+       	this.user = user;
+        this.con = con;
     }
 
     @SuppressWarnings("unchecked")
@@ -71,8 +77,8 @@ public class Ambulance_master_qeue extends javax.swing.JPanel {
                                 .addComponent(btnAssignToMe, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(41, 41, 41)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 979, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 204, Short.MAX_VALUE)))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 15, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -96,6 +102,9 @@ public class Ambulance_master_qeue extends javax.swing.JPanel {
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
         // TODO add your handling code here:
+        
+        Ambulance_work_queue cityInt = new Ambulance_work_queue(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, cityInt);
     }//GEN-LAST:event_btnbackActionPerformed
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed

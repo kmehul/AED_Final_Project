@@ -6,6 +6,9 @@ package UI.DisasterManagement;
 
 import Constants.CustomValidations;
 import javax.swing.JOptionPane;
+import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
+import java.sql.*;
 
 /**
  *
@@ -13,11 +16,16 @@ import javax.swing.JOptionPane;
  */
 public class Tactadmin extends javax.swing.JPanel {
 
+    private Connection con;
+    private UserAccount user;
+
     /**
      * Creates new form Tactadmin
      */
-    public Tactadmin() {
-        initComponents();
+    public Tactadmin(UserAccount user, Connection con) {
+        initComponents();	
+        this.user = user;
+        this.con = con;
     }
 
     /**
@@ -291,6 +299,11 @@ public class Tactadmin extends javax.swing.JPanel {
         lblHazmatManageEmp.setText("MANAGE TACT TEAM");
 
         jButton1.setText("BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -304,22 +317,20 @@ public class Tactadmin extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblHazmatManageEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(27, 27, 27))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(35, 35, 35))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(lblHazmatManageEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHazmatManageEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -364,9 +375,9 @@ public class Tactadmin extends javax.swing.JPanel {
         if(!txtuserName.getText().equals("")){
             //            Enterprise enterprise = (Enterprise) cbEnterprise.getSelectedItem();
 
-            String username = txtname.getText();
-            String password = String.valueOf(pwdPassword.getPassword());
-            String name = txtuserName.getText();
+//            String username = txtname.getText();
+//            String password = String.valueOf(pwdPassword.getPassword());
+//            String name = txtuserName.getText();
 
             //            Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
             //            if (EcoSystem.checkIfUsernameIsUnique(username)) {
@@ -382,10 +393,10 @@ public class Tactadmin extends javax.swing.JPanel {
                     //                }
 
                 //                populateTable();
-                JOptionPane.showMessageDialog(null, "Admin employee created");
-                txtuserName.setText("");
-                txtname.setText("");
-                pwdPassword.setText("");
+//                JOptionPane.showMessageDialog(null, "Admin employee created");
+//                txtuserName.setText("");
+//                txtname.setText("");
+//                pwdPassword.setText("");
                 //            }
             //else {
                 //JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -399,6 +410,12 @@ public class Tactadmin extends javax.swing.JPanel {
     private void pwdPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pwdPasswordActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        DM_work_queue panel = new DM_work_queue(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

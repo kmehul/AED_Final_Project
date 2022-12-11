@@ -5,6 +5,7 @@
 package UI.DisasterManagement;
 
 import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
 import java.sql.*;
 
 /**
@@ -168,6 +169,9 @@ public class TactTeamworkarea extends javax.swing.JPanel {
 
     private void btnReportCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportCaseActionPerformed
         // TODO add your handling code here:
+        // Submit report
+        tact_report panel = new tact_report(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
     }//GEN-LAST:event_btnReportCaseActionPerformed
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed

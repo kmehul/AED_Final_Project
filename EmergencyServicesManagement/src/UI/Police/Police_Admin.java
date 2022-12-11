@@ -5,6 +5,7 @@
 package UI.Police;
 
 import Services.UserAccount.UserAccount;
+import UI.MainJFrame;
 import java.sql.*;
 /**
  *
@@ -57,6 +58,11 @@ public class Police_Admin extends javax.swing.JPanel {
 
         btnAssignFire.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnAssignFire.setText(" Police Work Queue");
+        btnAssignFire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignFireActionPerformed(evt);
+            }
+        });
 
         btnReports.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnReports.setText("Reports");
@@ -115,7 +121,15 @@ public class Police_Admin extends javax.swing.JPanel {
 
     private void btnManageFireMarshalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageFireMarshalActionPerformed
         // TODO add your handling code here:
+        policecrud panel = new policecrud(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
     }//GEN-LAST:event_btnManageFireMarshalActionPerformed
+
+    private void btnAssignFireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignFireActionPerformed
+        // TODO add your handling code here:
+        Master_workqueue panel = new Master_workqueue(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
+    }//GEN-LAST:event_btnAssignFireActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

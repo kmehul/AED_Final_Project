@@ -4,17 +4,26 @@
  */
 package UI.Police;
 
+import UI.MainJFrame;
+import Services.UserAccount.UserAccount;
+import java.sql.*;
+
 /**
  *
  * @author tanujverma
  */
 public class personal_work_queue extends javax.swing.JPanel {
 
+    private Connection con;
+    private UserAccount user;
+
     /**
      * Creates new form personal_work_queue
      */
-    public personal_work_queue() {
+    public personal_work_queue(UserAccount user, Connection con) {
         initComponents();
+       	this.user = user;
+        this.con = con;
     }
 
     /**
@@ -32,6 +41,7 @@ public class personal_work_queue extends javax.swing.JPanel {
         btnSubmitReport1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        btnSubmitReport2 = new javax.swing.JButton();
 
         jLabel5.setText("jLabel2");
 
@@ -63,37 +73,43 @@ public class personal_work_queue extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable2);
 
+        btnSubmitReport2.setText("BACK");
+        btnSubmitReport2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitReport2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 943, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1143, Short.MAX_VALUE)
-                .addGap(36, 36, 36))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(479, 479, 479)
-                    .addComponent(btnSubmitReport1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(480, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnSubmitReport2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1147, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(485, 485, 485)
+                        .addComponent(btnSubmitReport1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel1)
-                .addGap(90, 90, 90)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(339, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(563, 563, 563)
-                    .addComponent(btnSubmitReport1)
-                    .addContainerGap(194, Short.MAX_VALUE)))
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addComponent(btnSubmitReport1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addComponent(btnSubmitReport2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -103,12 +119,21 @@ public class personal_work_queue extends javax.swing.JPanel {
 
     private void btnSubmitReport1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitReport1ActionPerformed
         // TODO add your handling code here:
+        Police_Report panel = new Police_Report(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
     }//GEN-LAST:event_btnSubmitReport1ActionPerformed
+
+    private void btnSubmitReport2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitReport2ActionPerformed
+        // TODO add your handling code here:
+        Police_work_queue panel = new Police_work_queue(user, con);
+        new MainJFrame().replaceSplitPaneChild(this, panel);
+    }//GEN-LAST:event_btnSubmitReport2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSubmitReport;
     private javax.swing.JButton btnSubmitReport1;
+    private javax.swing.JButton btnSubmitReport2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;

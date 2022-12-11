@@ -4,17 +4,21 @@
  */
 package UI.DisasterManagement;
 
+import Services.UserAccount.UserAccount;
+
 /**
  *
  * @author Anirudh
  */
 public class TactTeamworkarea extends javax.swing.JPanel {
 
+    UserAccount user;
     /**
      * Creates new form TactTeamOfficial
      */
-    public TactTeamworkarea() {
+    public TactTeamworkarea(UserAccount user) {
         initComponents();
+        this.user = user;
     }
 
     /**

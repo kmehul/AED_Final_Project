@@ -5,7 +5,10 @@
 package UI.AdminInterface;
 
 import Constants.CustomValidations;
+import Services.UserAccount.UserAccount;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import java.sql.*;  
 
 /**
  *
@@ -13,11 +16,16 @@ import javax.swing.JOptionPane;
  */
 public class ManageEnterpriseAdminInterface extends javax.swing.JPanel {
 
+    UserAccount user; 
+    Connection con;
+    
     /**
      * Creates new form ManageEnterpriseAdminInterface
      */
-    public ManageEnterpriseAdminInterface() {
+    public ManageEnterpriseAdminInterface(UserAccount user, Connection con) {
         initComponents();
+        this.con = con;
+        this.user = user;
     }
 
     /**

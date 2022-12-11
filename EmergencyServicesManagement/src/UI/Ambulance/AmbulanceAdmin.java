@@ -4,17 +4,21 @@
  */
 package UI.Ambulance;
 
+import Services.UserAccount.UserAccount;
+
 /**
  *
  * @author Anirudh
  */
 public class AmbulanceAdmin extends javax.swing.JPanel {
 
+    private UserAccount user;
     /**
      * Creates new form HospitalAdmin
      */
-    public AmbulanceAdmin() {
+    public AmbulanceAdmin(UserAccount user) {
         initComponents();
+        this.user = user;
     }
 
     /**

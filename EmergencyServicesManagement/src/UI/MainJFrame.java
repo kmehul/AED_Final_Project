@@ -4,11 +4,29 @@
  */
 package UI;
 
+import Services.SqlConn.SqlConn;
 import Services.UserAccount.UserAccount;
+import Services.UserAccount.UserAccountDirectory;
+import UI.AdminInterface.SystemAdminInterface;
+import UI.Ambulance.AmbulanceAdmin;
+import UI.Ambulance.Ambulance_work_queue;
+import UI.DisasterManagement.DM_work_queue;
+import UI.DisasterManagement.Hazmatteamworkarea;
+import UI.DisasterManagement.TactTeamworkarea;
+
+import UI.Fire.Fire_work_queue;
+import UI.Fire.firadminInterface;
+import UI.OperatorHandling.OperatorAdmin;
+import UI.OperatorHandling.Operator_admin_queue;
+import UI.Police.Police_Admin;
+import UI.Police.Police_work_queue;
+import java.sql.*;  
 import java.awt.CardLayout;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -16,13 +34,17 @@ import javax.swing.JPanel;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
-//    private EcoSystem system;
-//    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    private UserAccount user; 
+    private SqlConn sqlSystem;
+    private Connection con;
+    private ResultSet rs;
+    Statement stmt;
     
     public MainJFrame() {
         initComponents();
-        //system = dB4OUtil.retrieveSystem();
-        //EcoSystem.setInstance(system);
+        user = new UserAccount();
+        sqlSystem = new SqlConn();
+        con = sqlSystem.SqlConnDB();
         setExtendedState(getExtendedState()| JFrame.MAXIMIZED_BOTH);
     }
 
@@ -42,8 +64,7 @@ public class MainJFrame extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
         lblUserName = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
-        btnComplaint = new javax.swing.JButton();
-        btnLogout1 = new javax.swing.JButton();
+        btnLogoutMain = new javax.swing.JButton();
         Container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,28 +87,14 @@ public class MainJFrame extends javax.swing.JFrame {
         lblPassword.setText("Password");
         LoginJPanel.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 86, -1, -1));
 
-        btnComplaint.setBackground(new java.awt.Color(255, 255, 255));
-        btnComplaint.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        btnComplaint.setForeground(new java.awt.Color(255, 255, 255));
-        btnComplaint.setText("Complaint");
-        btnComplaint.setToolTipText("");
-        btnComplaint.setBorder(new javax.swing.border.MatteBorder(null));
-        btnComplaint.setEnabled(false);
-        btnComplaint.addActionListener(new java.awt.event.ActionListener() {
+        btnLogoutMain.setText("Logout");
+        btnLogoutMain.setEnabled(false);
+        btnLogoutMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnComplaintActionPerformed(evt);
+                btnLogoutMainActionPerformed(evt);
             }
         });
-        LoginJPanel.add(btnComplaint, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 573, 100, 80));
-
-        btnLogout1.setText("Logout");
-        btnLogout1.setEnabled(false);
-        btnLogout1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogout1ActionPerformed(evt);
-            }
-        });
-        LoginJPanel.add(btnLogout1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 208, 100, -1));
+        LoginJPanel.add(btnLogoutMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 208, 100, -1));
 
         jSplitPane1.setLeftComponent(LoginJPanel);
 
@@ -100,13 +107,87 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // Get user name
-        String userName = txtUserName.getText();
-        // Get Password
-        char[] passwordCharArray = txtPassword.getPassword();
 
+        
+        String userName = txtUserName.getText();
+        char[] passwordCharArray = txtPassword.getPassword();
         String password = String.valueOf(passwordCharArray);
 
+        try{
+        stmt = con.createStatement();  
+        rs = stmt.executeQuery("select * from user_account where user_username = '" + userName + "' and user_password = '" + password + "'");  
+        System.out.println(rs.next());
+        user.setId(rs.getInt("user_id"));
+        user.setName(rs.getString("user_name"));
+        user.setUserName(rs.getString("user_username"));
+        user.setPassword(rs.getString("user_password"));
+        user.setRole(rs.getString("user_role"));
+        
+        //int day = 4;
+        switch (user.getRole()) {
+            case "sys":{
+                System.out.println("sys admin");
+                JPanel userProcessContainer = new JPanel();
+                SystemAdminInterface admininteraface = new SystemAdminInterface(user, con);
+                jSplitPane1.setRightComponent(admininteraface);
+                break;}
+            case "opa":{
+                OperatorAdmin admininteraface = new OperatorAdmin(user);
+                jSplitPane1.setRightComponent(admininteraface);
+                break;}
+            case "fma":{
+                firadminInterface admininteraface = new firadminInterface(user);
+                jSplitPane1.setRightComponent(admininteraface);
+                break;}
+            case "poa":{
+                Police_Admin admininteraface = new Police_Admin(user);
+                jSplitPane1.setRightComponent(admininteraface);
+                break;}
+            case "dma":{
+                DM_work_queue admininteraface = new DM_work_queue(user);
+                jSplitPane1.setRightComponent(admininteraface);
+                break;}           
+            case "aba":{
+                AmbulanceAdmin admininteraface = new AmbulanceAdmin(user);
+                jSplitPane1.setRightComponent(admininteraface);
+                break;}             
+            case "ope":{
+                Operator_admin_queue admininteraface = new Operator_admin_queue(user);
+                jSplitPane1.setRightComponent(admininteraface);
+                break;}
+            case "fme":{
+                Fire_work_queue admininteraface = new Fire_work_queue(user);
+                jSplitPane1.setRightComponent(admininteraface);
+                break;}
+            case "poe":{
+                Police_work_queue admininteraface = new Police_work_queue(user);
+                jSplitPane1.setRightComponent(admininteraface);
+                break;}
+            case "ame":{
+                Ambulance_work_queue admininteraface = new Ambulance_work_queue(user);
+                jSplitPane1.setRightComponent(admininteraface);
+                break;}               
+            case "hze":{
+                Hazmatteamworkarea admininteraface = new Hazmatteamworkarea(user);
+                jSplitPane1.setRightComponent(admininteraface);
+                break;}               
+            case "tte":{
+                TactTeamworkarea admininteraface = new TactTeamworkarea(user);
+                jSplitPane1.setRightComponent(admininteraface);
+                break;}              
+            }
+        
+        btnLogin.setEnabled(false);
+        txtUserName.setEnabled(false);
+        txtPassword.setEnabled(false);
+        btnLogoutMain.setEnabled(true);
+        
+        }catch(Exception e){
+            //sqlSystem.DisplayMessage(e.getMessage());
+            JOptionPane.showMessageDialog(null, "Please Enter valid Login credentials\n" + e.getMessage());
+        }
+        
+        
         //Step1: Check in the system user account directory if you have the user
 //        UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
 //        Enterprise inEnterprise = null;
@@ -154,33 +235,39 @@ public class MainJFrame extends javax.swing.JFrame {
 //            Container.add("workArea", userAccount.getRole().createWorkArea(Container, userAccount, inOrganization, inEnterprise, inNetwork, system));
 //            layout.next(Container);
 //        }
-        btnLogin.setEnabled(false);
-        btnComplaint.setEnabled(true);
-        txtUserName.setEnabled(false);
-        txtPassword.setEnabled(false);
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void btnComplaintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComplaintActionPerformed
-        btnComplaint.setEnabled(false);
+    private void btnLogoutMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutMainActionPerformed
+        // TODO add your handling code here:
+        
+        btnLogoutMain.setEnabled(false);
         txtUserName.setEnabled(true);
         txtPassword.setEnabled(true);
         btnLogin.setEnabled(true);
 
         txtUserName.setText("");
         txtPassword.setText("");
-
+        
         Container.removeAll();
         JPanel blankJP = new JPanel();
         Container.add("blank", blankJP);
         CardLayout crdLyt = (CardLayout) Container.getLayout();
         crdLyt.next(Container);
-//        dB4OUtil.storeSystem(system);
-    }//GEN-LAST:event_btnComplaintActionPerformed
+        
+        try{ con.close(); }
+        catch(Exception e) { JOptionPane.showMessageDialog(null, "Unexpected DB Close error."); }
+    }//GEN-LAST:event_btnLogoutMainActionPerformed
 
-    private void btnLogout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLogout1ActionPerformed
-
+    public void replaceSplitPaneChild(JComponent oldChild, JComponent newChild) {
+    JSplitPane parent = (JSplitPane) oldChild.getParent();
+    int dividerLocation = parent.getDividerLocation();
+    parent.remove(oldChild);
+    parent.add(newChild);
+    parent.setDividerLocation(dividerLocation);
+    newChild.revalidate();
+    newChild.repaint();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -219,9 +306,8 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Container;
     private javax.swing.JPanel LoginJPanel;
-    private javax.swing.JButton btnComplaint;
     private javax.swing.JButton btnLogin;
-    private javax.swing.JButton btnLogout1;
+    private javax.swing.JButton btnLogoutMain;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUserName;

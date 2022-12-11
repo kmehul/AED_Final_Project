@@ -8,6 +8,6 @@ package Services.Organization;
  *
  * @author Anirudh
  */
-public class DEAServices {
+public class HazMatServices {
     
 }

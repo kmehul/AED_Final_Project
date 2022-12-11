@@ -35,7 +35,7 @@ public class AMBULANCE_REPORTS extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Report ID", "Work ID", "Ambulance ID", "Hospital Name", "Address of Incident", "VIctim Name", "Comments"
+                "Report ID", "Ambulance ID", "Work ID", "VIctim ID", "Victim Name", "VIctim Address", "Hospital Name", "Hospital Address", "Comments"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

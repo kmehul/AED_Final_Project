@@ -33,7 +33,7 @@ public class master_work_queue extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("PERSONAL QUEUE");
+        jLabel2.setText("MASTER QUEUE");
 
         btnSubmitReport.setText("ASSIGN TO ME");
         btnSubmitReport.addActionListener(new java.awt.event.ActionListener() {

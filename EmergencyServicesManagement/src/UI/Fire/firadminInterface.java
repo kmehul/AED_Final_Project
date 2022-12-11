@@ -5,7 +5,7 @@
 package UI.Fire;
 
 import Services.UserAccount.UserAccount;
-
+import java.sql.*;
 /**
  *
  * @author tanujverma
@@ -13,17 +13,14 @@ import Services.UserAccount.UserAccount;
 public class firadminInterface extends javax.swing.JPanel {
 
     UserAccount user;
-    
+    Connection con;
     /**
      * Creates new form firadminInterface
      */
-//<<<<<<< Updated upstream:EmergencyServicesManagement/src/UI/Fire/firadminInterface.java
-//    public firadminInterface() {
-//=======
-    public firadminInterface(UserAccount user) {
-//>>>>>>> Stashed changes:EmergencyServicesManagement/src/UI/Fire/FireAdminInterface.java
+    public firadminInterface(UserAccount user, Connection con) {
         initComponents();
         this.user = user;
+        this.con = con;
     }
 
     /**

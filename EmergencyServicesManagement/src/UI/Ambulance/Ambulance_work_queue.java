@@ -5,6 +5,7 @@
 package UI.Ambulance;
 
 import Services.UserAccount.UserAccount;
+import java.sql.*;
 
 /**
  *
@@ -12,14 +13,16 @@ import Services.UserAccount.UserAccount;
  */
 public class Ambulance_work_queue extends javax.swing.JPanel {
 
-    UserAccount user;
-            
+    private UserAccount user;
+    private Connection con;
     /**
      * Creates new form Ambulance_work_queue
      */
-    public Ambulance_work_queue(UserAccount user) {
+    public Ambulance_work_queue(UserAccount user, Connection con) {
         initComponents();
         this.user = user;
+        this.con = con;
+        
     }
 
     /**

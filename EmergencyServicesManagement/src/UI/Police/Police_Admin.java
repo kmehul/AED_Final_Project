@@ -5,7 +5,7 @@
 package UI.Police;
 
 import Services.UserAccount.UserAccount;
-
+import java.sql.*;
 /**
  *
  * @author tanujverma
@@ -13,13 +13,15 @@ import Services.UserAccount.UserAccount;
 public class Police_Admin extends javax.swing.JPanel {
 
     UserAccount user;
+    Connection con;
     
     /**
      * Creates new form Police_Admin
      */
-    public Police_Admin(UserAccount user) {
+    public Police_Admin(UserAccount user, Connection con) {
         initComponents();
         this.user = new UserAccount();
+        this.con = con;
     }
 
     /**

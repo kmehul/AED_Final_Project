@@ -4,17 +4,27 @@
  */
 package UI.OperatorHandling;
 
+
+import Services.UserAccount.UserAccount;
+import java.sql.*;
+
 /**
  *
  * @author tanujverma
  */
 public class workqueue_ extends javax.swing.JPanel {
 
+    private Connection con;
+    private UserAccount user;
+
     /**
      * Creates new form workqueue_
      */
-    public workqueue_() {
+    public workqueue_(UserAccount user, Connection con) {
         initComponents();
+        this.user = user;
+        this.con = con;
+
     }
 
     /**
@@ -52,6 +62,7 @@ public class workqueue_ extends javax.swing.JPanel {
         jTextField12 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        btnback = new javax.swing.JButton();
 
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +156,8 @@ public class workqueue_ extends javax.swing.JPanel {
 
         jLabel9.setText("WORK QUEUE");
 
+        btnback.setText("BACK");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -201,14 +214,16 @@ public class workqueue_ extends javax.swing.JPanel {
                         .addGap(39, 39, 39)
                         .addComponent(jTextField9)))
                 .addGap(36, 36, 36))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(316, 316, 316)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(443, 443, 443))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(316, 316, 316)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,7 +280,9 @@ public class workqueue_ extends javax.swing.JPanel {
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(68, 68, 68)
                 .addComponent(jButton1)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(btnback)
+                .addGap(41, 41, 41))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -311,6 +328,7 @@ public class workqueue_ extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnback;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel17;

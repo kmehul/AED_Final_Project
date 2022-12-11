@@ -20,7 +20,6 @@ import javax.swing.JFrame;
  */
 public class SystemAdminInterface extends javax.swing.JPanel {
 
-    JPanel userProcessContainer;
     Connection con;
     UserAccount user;
     
@@ -32,7 +31,6 @@ public class SystemAdminInterface extends javax.swing.JPanel {
 //        this.userProcessContainer = userProcessContainer;
         this.user = user;
         this.con = con;
-        this.userProcessContainer = userProcessContainer;
     }
 
     /**

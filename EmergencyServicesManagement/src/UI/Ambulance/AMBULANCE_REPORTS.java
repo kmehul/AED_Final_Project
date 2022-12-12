@@ -8,6 +8,8 @@ import Services.UserAccount.UserAccount;
 import UI.AdminInterface.SystemAdminInterface;
 import UI.MainJFrame;
 import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,7 +19,10 @@ public class AMBULANCE_REPORTS extends javax.swing.JPanel {
 
     private Connection con;
     private UserAccount user;
-
+    PreparedStatement p = null;
+        PreparedStatement p2 = null;
+        ResultSet rs = null;
+    
 
     /**
      * Creates new form AMBULANCE_REPORTS
@@ -26,8 +31,60 @@ public class AMBULANCE_REPORTS extends javax.swing.JPanel {
         initComponents();
 	this.user = user;
         this.con = con;
+        populatetable();
     }
 
+       private void populatetable(){
+    
+        
+        try {
+            ArrayList<String> directory = new ArrayList<>();
+            
+            String sql = "select w.*,v.* from work_queue w join victim v on v.victim_id = w.victim_id;";
+            p = con.prepareStatement(sql);
+            rs = p.executeQuery();
+     
+        
+            
+          
+            while (rs.next()) {
+                String victimName = rs.getString("victim_name");
+                String victimaddress = rs.getString("victim_address");
+                String victimid = rs.getString("victim_id");
+                
+                    directory.add(victimid); 
+                    directory.add(victimName);
+                    directory.add(victimaddress);
+                                   
+                
+            }
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            Object data[] = new Object[7];
+            
+            for (int i = 0; i < directory.size(); i+=3){
+                    
+                data[0] = directory.get(i);
+                data[1] = directory.get(i+1);
+                data[2] = directory.get(i+2);
+                data[3] = "";
+                data[4] = "";
+                data[5] = "";
+                data[6] = "";
+                
+                 
+                model.addRow(data);
+            }
+        }
+ 
+        
+        catch (SQLException e) {
+            
+            System.out.println(e.getMessage());
+        }
+            
+            
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,11 +108,11 @@ public class AMBULANCE_REPORTS extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Report ID", "Ambulance ID", "VIctim ID", "Victim Name", "VIctim Address", "Hospital Name", "Hospital Address", "Comments", "Assigned To"
+                "VIctim ID", "Victim Name", "VIctim Address", "Hospital Name", "Hospital Address", "Comments", "Assigned To"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

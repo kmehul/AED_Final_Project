@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 import Services.UserAccount.UserAccount;
 import UI.MainJFrame;
 import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +20,8 @@ public class Operatorcrud extends javax.swing.JPanel {
 
     private Connection con;
     private UserAccount user;
+    PreparedStatement p = null;
+            ResultSet rs = null;
 
     /**
      * Creates new form Operatorcrud
@@ -26,6 +30,7 @@ public class Operatorcrud extends javax.swing.JPanel {
         initComponents();
       	this.user = user;
         this.con = con;
+        populateTable();
     }
 
     /**
@@ -64,14 +69,46 @@ public class Operatorcrud extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         btnBACK = new javax.swing.JButton();
 
+        paneupdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                paneupdateMouseClicked(evt);
+            }
+        });
+
+        jPanel1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanel1FocusGained(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
+
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "USER ID", "Name", "PASSWORD"
+                "User Name", "Name", "PASSWORD"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -344,37 +381,33 @@ public class Operatorcrud extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         if(!txtName.getText().equals("")){
-            //            Enterprise enterprise = (Enterprise) cbEnterprise.getSelectedItem();
+            
 
             String username = txtUsername.getText();
             String password = String.valueOf(pwdPassword.getPassword());
             String name = txtName.getText();
-
-            //            Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
-            //            if (EcoSystem.checkIfUsernameIsUnique(username)) {
-                //                UserAccount account = null;
-                //                if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.PoliceEnterprise) {
-                    //                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new PoliceAdminRole());
-                    //                }
-                //                else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.HospitalEnterprise) {
-                    //                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());
-                    //                }
-                //                else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.GovernmentEnterprise) {
-                    //                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new GovernmentAdminRole());
-                    //                }
-
-                //                populateTable();
+            String role ="ope";
+            int ent_id = user.getEnterprise_Id();
+            
+            try { 
+            String sql2 = "INSERT INTO user_account (user_name, user_username, user_password, user_role, Enterprise_Id) values (?, ?, ?, ?, ?)";
+            PreparedStatement statement = con.prepareStatement(sql2);
+            statement.setString(1, String.valueOf(name));
+            statement.setString(2, String.valueOf(username));
+            statement.setString(3, String.valueOf(password));
+            statement.setString(4, String.valueOf(role));
+            statement.setString(5, String.valueOf(ent_id));
+            int row = statement.executeUpdate();
+           
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }  
+           
                 JOptionPane.showMessageDialog(null, "Admin employee created");
                 txtName.setText("");
                 txtUsername.setText("");
                 pwdPassword.setText("");
-                //            }
-            //else {
-                //JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
-                //}
-            //            else{
-                //                JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
-                //            }
+         
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
@@ -392,10 +425,40 @@ public class Operatorcrud extends javax.swing.JPanel {
 
     private void btnSubmit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmit2ActionPerformed
         // TODO add your handling code here:
+        String user_id = jTextField1.getText();
+        String name = txtUsername2.getText();
+        String username = txtName2.getText();
+        String password = pwdPassword2.getText();
+        
+        try{
+            String sql2 = "UPDATE user_account SET user_name = '" + name + "', user_username = '" +username+ "', user_password = '"+password+"' WHERE user_id = "+ Integer.parseInt(user_id);
+            PreparedStatement statement = con.prepareStatement(sql2);
+            int row = statement.executeUpdate();
+            
+            } catch (SQLException ex) {
+                System.out.println("couldn't update");
+            }  
     }//GEN-LAST:event_btnSubmit2ActionPerformed
 
     private void btnSubmit3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmit3ActionPerformed
         // TODO add your handling code here:
+        String user_id = jTextField1.getText();
+        
+        try {
+ 
+            // SQL command data stored in String datatype
+            String sql = "select * from user_account where user_id = " + Integer.parseInt(user_id)+" and Enterprise_Id = "+user.getEnterprise_Id();
+            p = con.prepareStatement(sql);
+            rs = p.executeQuery();
+            rs.next();
+            txtUsername2.setText(rs.getString("user_name"));
+            txtName2.setText(rs.getString("user_username"));
+            pwdPassword2.setText(rs.getString("user_password"));
+        }
+        catch(Exception e){
+            System.out.println("User Id not found or Person not in your enterprise.");
+             }
+        
     }//GEN-LAST:event_btnSubmit3ActionPerformed
 
     private void btnBACKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBACKActionPerformed
@@ -404,7 +467,59 @@ public class Operatorcrud extends javax.swing.JPanel {
         new MainJFrame().replaceSplitPaneChild(this, panel);
     }//GEN-LAST:event_btnBACKActionPerformed
 
+    private void jPanel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel1FocusGained
+   
+    }//GEN-LAST:event_jPanel1FocusGained
 
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void paneupdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paneupdateMouseClicked
+        populateTable();
+    }//GEN-LAST:event_paneupdateMouseClicked
+
+    private void populateTable(){
+        ArrayList<String> enterprise = new ArrayList<String>();
+         try {
+            
+            String sql = "select * from user_account where Enterprise_Id = "+ user.getEnterprise_Id() +" and user_role = 'ope'";
+            p = con.prepareStatement(sql);
+            rs = p.executeQuery();
+             System.out.println("Hello");
+ 
+            while (rs.next()) {
+                String name = rs.getString("user_username");
+                String city_name = rs.getString("user_name");
+                String type = rs.getString("user_password");
+                enterprise.add(name);
+                enterprise.add(city_name);
+                enterprise.add(type);
+            }
+            
+        }
+ 
+        catch (SQLException e) {
+ 
+            System.out.println(e);
+        }
+         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+            model.setRowCount(0);
+            Object data[] = new Object[3];
+             System.out.println(enterprise);
+            for (int i = 0; i < enterprise.size(); i+=3){
+                
+                String name = enterprise.get(i);
+                String city_name = enterprise.get(i+1);
+                String type = enterprise.get(i+2);
+                data[0] = name;
+                data[1] = city_name;
+                data[2] = type;
+                 
+                model.addRow(data);
+                
+            }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBACK;
     private javax.swing.JButton btnSubmit;

@@ -18,9 +18,18 @@ public class UserAccount {
     
     private int id;
     private String userName;
+
+    public int getEnterprise_Id() {
+        return Enterprise_Id;
+    }
+
+    public void setEnterprise_Id(int Enterprise_Id) {
+        this.Enterprise_Id = Enterprise_Id;
+    }
     private String password;
     private String role;
     private String name;
+    private int Enterprise_Id;
 
     
     public int getId() {
@@ -38,7 +47,7 @@ public class UserAccount {
     public void setRole(String role) {
         this.role = role;
     }
-//    private WorkQueue workQueue;
+
     private ArrayList<Integer> IncidentList;
 
     public ArrayList<Integer> getIncidentList() {
@@ -50,7 +59,6 @@ public class UserAccount {
     }
 
     public UserAccount() {
-        //workQueue = new WorkQueue();
         IncidentList = new ArrayList<>();
         this.setIncidentList(IncidentList);
     }
@@ -87,37 +95,36 @@ public class UserAccount {
     
     public void sendemail()
     {
-        Properties props = new Properties();    
-          props.put("mail.smtp.host", "smtp.gmail.com");    
-          props.put("mail.smtp.socketFactory.port", "465");    
-          props.put("mail.smtp.socketFactory.class",    
-                    "javax.net.ssl.SSLSocketFactory");    
-          props.put("mail.smtp.auth", "true");    
-          props.put("mail.smtp.port", "465");    
-          //get Session   
-          Session session = Session.getDefaultInstance(props,    
-           new javax.mail.Authenticator() {    
-           protected PasswordAuthentication getPasswordAuthentication() {    
-           return new PasswordAuthentication("verma.tanu@northeastern.edu","Jagdishgeeta@1995");  
-           }    
-          });    
-          //compose message    
-          try {    
-           MimeMessage message = new MimeMessage(session);    
-           message.addRecipient(Message.RecipientType.TO,new InternetAddress("harshsdw1@gmail.com"));    
-           message.setSubject("Test");    
-           message.setText("Txt nahi test");    
-           //send message  
-           Transport.send(message);    
-           System.out.println("message sent successfully");    
-          } catch (MessagingException e) {throw new RuntimeException(e);}    
+      
+       String to = "harshsdw1@gmail.com";
+      String from = "tanujverma68@gmail.com";
+      String host = "142.251.163.109";
+
+      Properties properties = System.getProperties();
+      properties.put("mail.smtp.host", host);
+      properties.put("mail.smtp.port", "587");
+      properties.put("mail.smtp.ssl.enable", "true");
+      properties.put("mail.smtp.auth", "true");
+
+      Session session = Session.getInstance(properties, new javax.mail.Authenticator(){
+        protected PasswordAuthentication getPasswordAuthentication() {
+          return new PasswordAuthentication("tanujverma68@gmail.com", "Tanuj@0912");
+        }
+      });
+
+      try {
+        MimeMessage message = new MimeMessage(session);
+        message.setFrom(new InternetAddress(from));
+        message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+        message.setSubject("This is the email subject");
+        message.setText("This is the email body");
+
+        Transport.send(message);
+      } catch (MessagingException mex) {
+        mex.printStackTrace();
+      }
     }
-    
-    
-    public static void main(String[] args) {
-        UserAccount ua = new UserAccount();
-        ua.sendemail();
-    }
+   
     
 }
 

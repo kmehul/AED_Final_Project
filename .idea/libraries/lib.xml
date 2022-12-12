@@ -1,0 +1,52 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jfreechart-1.0.19-experimental.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jfreesvg-2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/swtgraphics2d.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/json-20171018.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/google-play-services.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jfreechart-1.0.19-swt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jxbrowser-mac-6.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jxbrowser-swt-7.28.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/orsonpdf-1.6-eval.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/smtp-1.4.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jxbrowser-linux64-6.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/slf4j-simple-1.7.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/license.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jxbrowser-win32-6.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jxbrowser-win64-7.28.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jxbrowser-7.28.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/activation.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/geoip-api-1.2.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/geocoder-java-0.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/gson-2.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/slf4j-api-1.7.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/commons-io-2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jcommon-1.0.23.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jxbrowser-linux64-7.28.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/AbsoluteLayout.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jxbrowser-win32-7.28.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/servlet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/hamcrest-core-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/swingx-0.9.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jxbrowser-linux64-arm-7.28.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jxbrowser-swing-7.28.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/orsoncharts-1.4-eval-nofx.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/com.lowagie.text-2.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jfreechart-1.0.19.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jxbrowser-6.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jxbrowser-javafx-7.28.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/commons-lang3-3.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/com.google.android.maps.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jxbrowser-mac-7.28.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/mysql-connector-j-8.0.31.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/db4o-8.0.249.16098-all-java5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/jxbrowser-mac-arm-7.28.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/lib/junit-4.11.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

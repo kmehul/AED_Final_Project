@@ -22,7 +22,7 @@ public class OperatorAdmin extends javax.swing.JPanel {
      */
     public OperatorAdmin(UserAccount user, Connection con) {
         initComponents();
-        user = new UserAccount();
+        this.user = user;
         this.con = con;
     }
 

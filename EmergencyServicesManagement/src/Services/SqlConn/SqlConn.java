@@ -4,12 +4,8 @@
  */
 package Services.SqlConn;
 
-import Services.UserAccount.UserAccountDirectory;
-import UI.MainJFrame;
 import java.sql.*;  
 import javax.swing.JOptionPane;
-import java.awt.CardLayout;
-import javax.swing.JPanel;
 
 /**
  *
@@ -20,7 +16,7 @@ public class SqlConn {
     public Connection SqlConnDB(){
     
         try{  
-            Class.forName("com.mysql.jdbc.Driver");  
+            Class.forName("com.mysql.cj.jdbc.Driver");  
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost/aed","root","password");  
  
             return con;

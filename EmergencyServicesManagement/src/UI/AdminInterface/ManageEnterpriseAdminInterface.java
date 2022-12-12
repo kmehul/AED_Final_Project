@@ -8,8 +8,9 @@ import Constants.CustomValidations;
 import Services.UserAccount.UserAccount;
 import UI.MainJFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import java.sql.*;  
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -27,6 +28,9 @@ public class ManageEnterpriseAdminInterface extends javax.swing.JPanel {
         initComponents();
         this.con = con;
         this.user = user;
+        
+        populateEnterpriseDropdown();
+
     }
 
     /**
@@ -42,8 +46,6 @@ public class ManageEnterpriseAdminInterface extends javax.swing.JPanel {
         txtUsername = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEnterpriseAdmin = new javax.swing.JTable();
-        lblCity = new javax.swing.JLabel();
-        cbCity = new javax.swing.JComboBox();
         cbEnterprise = new javax.swing.JComboBox();
         lblEnterprise = new javax.swing.JLabel();
         lblUsername = new javax.swing.JLabel();
@@ -69,7 +71,7 @@ public class ManageEnterpriseAdminInterface extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Enterprise Name", "City", "Username"
+                "Enterprise Name", "Name", "Username"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -82,19 +84,12 @@ public class ManageEnterpriseAdminInterface extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblEnterpriseAdmin);
 
-        lblCity.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        lblCity.setText("City");
-
-        cbCity.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        cbCity.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbCity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbCityActionPerformed(evt);
+        cbEnterprise.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        cbEnterprise.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbEnterpriseItemStateChanged(evt);
             }
         });
-
-        cbEnterprise.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        cbEnterprise.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblEnterprise.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         lblEnterprise.setText("Enterprise:");
@@ -144,8 +139,6 @@ public class ManageEnterpriseAdminInterface extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbCity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,13 +156,9 @@ public class ManageEnterpriseAdminInterface extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(lblManageEnterpriseAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblCity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbCity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(lblEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -187,21 +176,12 @@ public class ManageEnterpriseAdminInterface extends javax.swing.JPanel {
                         .addComponent(txtAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(128, 128, 128)
+                        .addGap(43, 43, 43)
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cbCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCityActionPerformed
-
-//        Network network = (Network) cbCity.getSelectedItem();
-//        if (network != null) {
-//            populateEnterpriseComboBox(network);
-//        }
-
-    }//GEN-LAST:event_cbCityActionPerformed
 
     private void txtAdminNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAdminNameKeyPressed
         // TODO add your handling code here:
@@ -219,39 +199,145 @@ public class ManageEnterpriseAdminInterface extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         if(!txtAdminName.getText().equals("")){
-//            Enterprise enterprise = (Enterprise) cbEnterprise.getSelectedItem();
 
             String username = txtUsername.getText();
             String password = String.valueOf(pwdPassword.getPassword());
             String name = txtAdminName.getText();
-
-//            Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
-//            if (EcoSystem.checkIfUsernameIsUnique(username)) {
-//                UserAccount account = null;
-//                if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.PoliceEnterprise) {
-//                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new PoliceAdminRole());
-//                }
-//                else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.HospitalEnterprise) {
-//                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());
-//                }
-//                else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.GovernmentEnterprise) {
-//                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new GovernmentAdminRole());
-//                }
-
-//                populateTable();
+            String enterprise = cbEnterprise.getSelectedItem().toString();
+            try { 
+            PreparedStatement p = null;
+            ResultSet rs = null;
+  
+            String sql = "select * from Enterprise where Enterprise_Name = '"+enterprise+"'";
+            p = con.prepareStatement(sql);
+            rs = p.executeQuery();
+            int id = 0;
+            String type = null;
+            while(rs.next()){
+                type = rs.getString("type");
+                id = rs.getInt("Enterprise_id");
+            }
+                
+            if(type.equals("Law Enforcement")){
+                type = "poa";
+            } else if(type.equals("Disaster Management")){
+                type = "dma";
+            } else if(type.equals("Fire Department")){
+                type = "fma";
+            } else if(type.equals("Operator Handling")){
+                type = "opa";
+            } else if(type.equals("Ambulance Service")){
+                type = "aba";
+            }
+           
+            String sql2 = "INSERT INTO user_account (user_name, user_username, user_password, user_role, Enterprise_Id) values (?, ?, ?, ?, ?)";
+            PreparedStatement statement = con.prepareStatement(sql2);
+            statement.setString(1, String.valueOf(name));
+            statement.setString(2, String.valueOf(username));
+            statement.setString(3, String.valueOf(password));
+            statement.setString(4, String.valueOf(type));
+            statement.setString(5, String.valueOf(id));
+            int row = statement.executeUpdate();
+            
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }  
+       
+              
+           populateEnterpriseAdminTable(); 
+            
+            
                 JOptionPane.showMessageDialog(null, "Admin employee created");
                 txtAdminName.setText("");
                 txtUsername.setText("");
                 pwdPassword.setText("");
-//            }
-            //else {
-                //JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
-                //}
-//            else{
-//                JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
-//            }
+
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
+    
+    private void populateEnterpriseAdminTable(){
+        
+        PreparedStatement p = null;
+        PreparedStatement p2 = null;
+        ResultSet rs = null;
+        ResultSet rs2 = null;
+        // Try block to catch exception/s
+        try {
+ 
+            String sql = "select * from user_account";
+            p = con.prepareStatement(sql);
+            rs = p.executeQuery();
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+             }
+            ArrayList<String> enterprise = new ArrayList<String>();
+            // Condition check
+            try{  
+            while (rs.next()) {
+                String name = rs.getString("user_name");
+                String user_username = rs.getString("user_username");
+                if(rs.getInt("Enterprise_Id") != 0){
+                String sql2 = "select * from Enterprise where Enterprise_Id = "+ rs.getInt("Enterprise_Id");
+                p2 = con.prepareStatement(sql2);
+                rs2 = p2.executeQuery();
+                rs2.next();
+                String ent_name = rs2.getString("Enterprise_Name");
+                
+                enterprise.add(ent_name);
+                enterprise.add(name);
+                enterprise.add(user_username);
+                }
+            }
+            }
+
+        catch (SQLException e) {
+ 
+            System.out.println(e.getMessage());
+        }
+            
+            DefaultTableModel model = (DefaultTableModel) tblEnterpriseAdmin.getModel();
+            model.setRowCount(0);
+            Object data[] = new Object[5];
+            
+            for (int i = 0; i < enterprise.size(); i+=3){
+                    
+                String ent_name = enterprise.get(i);
+                String name = enterprise.get(i+1);
+                 String username = enterprise.get(i+2);
+                  
+                data[0] = ent_name;
+                data[1] = name;
+                data[2] = username;
+                 
+                model.addRow(data);
+                
+            }
+        
+    }
+  
+    
+     private void populateEnterpriseDropdown(){
+        try{
+            PreparedStatement p = null;
+            ResultSet rs = null;
+  
+            String sql = "select * from Enterprise";
+            p = con.prepareStatement(sql);
+            rs = p.executeQuery();
+ 
+           //ArrayList<String> city = new ArrayList<String>();
+ 
+            while (rs.next()) {
+                String name = rs.getString("Enterprise_Name");
+                //city.add(name);
+                cbEnterprise.addItem(name);
+            }
+        }catch(SQLException ex){
+            System.out.println("Database error. Please Logout & Login again.");
+        }
+    }
+    
 
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
@@ -261,15 +347,17 @@ public class ManageEnterpriseAdminInterface extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_pwdPasswordActionPerformed
 
+    private void cbEnterpriseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbEnterpriseItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbEnterpriseItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSubmit;
-    private javax.swing.JComboBox cbCity;
     private javax.swing.JComboBox cbEnterprise;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAdminName;
-    private javax.swing.JLabel lblCity;
     private javax.swing.JLabel lblEnterprise;
     private javax.swing.JLabel lblManageEnterpriseAdmin;
     private javax.swing.JLabel lblPassword;

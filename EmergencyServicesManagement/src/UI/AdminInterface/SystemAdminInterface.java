@@ -6,13 +6,7 @@ package UI.AdminInterface;
 
 import Services.UserAccount.UserAccount;
 import UI.MainJFrame;
-
-import java.awt.CardLayout;
-import java.awt.FlowLayout;
-import javax.swing.JPanel;
 import java.sql.*;  
-import javax.swing.GroupLayout;
-import javax.swing.JFrame;
 
 /**
  *
@@ -28,7 +22,7 @@ public class SystemAdminInterface extends javax.swing.JPanel {
      */
     public SystemAdminInterface(UserAccount user, Connection con) {
         initComponents();
-//        this.userProcessContainer = userProcessContainer;
+
         this.user = user;
         this.con = con;
     }

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="EmergencyServicesManagement">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/EmergencyServicesManagement/dist/EmergencyServicesManagement.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

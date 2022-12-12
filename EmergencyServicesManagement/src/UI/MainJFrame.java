@@ -118,6 +118,7 @@ public class MainJFrame extends javax.swing.JFrame {
         user.setUserName(rs.getString("user_username"));
         user.setPassword(rs.getString("user_password"));
         user.setRole(rs.getString("user_role"));
+        user.setEnterprise_Id(rs.getInt("Enterprise_Id"));
         
         switch (user.getRole()) {
             case "sys":{
@@ -156,7 +157,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 Police_work_queue admininteraface = new Police_work_queue(user, con);
                 jSplitPane1.setRightComponent(admininteraface);
                 break;}
-            case "ame":{
+            case "abe":{
                 Ambulance_work_queue admininteraface = new Ambulance_work_queue(user, con);
                 jSplitPane1.setRightComponent(admininteraface);
                 break;}               

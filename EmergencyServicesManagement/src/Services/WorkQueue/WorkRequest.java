@@ -4,19 +4,40 @@
  */
 package Services.WorkQueue;
 
-import java.util.Date;
+import Services.Victim.Victim;
+import java.time.LocalDate;
 
 /**
  *
  * @author Anirudh
  */
-public abstract class WorkRequest {
+public class WorkRequest extends Victim {
     private int work_id;
     private int user_id;
     private int victim_id;
     private String assign_to;
     private String case_status;
+    private String description;
+    private LocalDate recievedDate;
 
+    public LocalDate getRecievedDate() {
+        return recievedDate;
+    }
+
+    public void setRecievedDate(LocalDate recievedDate) {
+        this.recievedDate = recievedDate;
+    }
+
+    
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
     public int getWork_id() {
         return work_id;
     }
@@ -56,7 +77,4 @@ public abstract class WorkRequest {
     public void setCase_status(String case_status) {
         this.case_status = case_status;
     }
-    
-        
-        
 }

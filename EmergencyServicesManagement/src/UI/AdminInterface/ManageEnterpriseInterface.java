@@ -6,12 +6,12 @@ package UI.AdminInterface;
 
 import javax.swing.JOptionPane;
 import Constants.CustomValidations;
-import Services.City.City;
+
 import Services.UserAccount.UserAccount;
 import UI.MainJFrame;
 import java.sql.*;  
-import java.awt.CardLayout;
-import java.awt.Component;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -22,6 +22,8 @@ public class ManageEnterpriseInterface extends javax.swing.JPanel {
 
     private Connection con;
     private UserAccount user;
+    PreparedStatement p = null;
+            ResultSet rs = null;
     
     /**
      * Creates new form ManageEnterpriseInterface
@@ -30,6 +32,9 @@ public class ManageEnterpriseInterface extends javax.swing.JPanel {
         initComponents();
         this.con = con;
         this.user = user;
+        
+        populateCityDropdown();
+        populateEnterpriseTable();
     }
 
     /**
@@ -73,7 +78,6 @@ public class ManageEnterpriseInterface extends javax.swing.JPanel {
 
         lblCity.setText("City:");
 
-        cdCity.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cdCity.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cdCityItemStateChanged(evt);
@@ -182,30 +186,38 @@ public class ManageEnterpriseInterface extends javax.swing.JPanel {
     private void btnAddEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEnterpriseActionPerformed
         
         if(!txtEnterpriseName.getText().trim().isEmpty()){
-            City city = (City) cdCity.getSelectedItem();
-//            Enterprise.EnterpriseType type = (Enterprise.EnterpriseType) cbEnterpriseType.getSelectedItem();
+            String city = cdCity.getSelectedItem().toString();
+            String enterprise = cbEnterpriseType.getSelectedItem().toString();
+            String name = txtEnterpriseName.getText();
+            
+       
+        if(!name.equals("")){  
+       try { 
+           
 
-//            if (network == null || type == null) {
-//                JOptionPane.showMessageDialog(null, "Invalid Input!");
-//                return;
-//            }
+            String sql2 = "INSERT INTO Enterprise (city_name, Enterprise_Name, type) values (?, ?, ?)";
+            
+            PreparedStatement statement = con.prepareStatement(sql2);
+            statement.setString(1, city);
+            statement.setString(2, name);
+            statement.setString(3, enterprise);
+            int row = statement.executeUpdate();
+            if(row>0){
+                populateEnterpriseTable();
 
-//            boolean enterpriseExixts = false;
-//            for(Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()){
-//                if(ent.getEnterpriseType().getValue().equals(type.getValue())){
-//                    enterpriseExixts = true;
-//                }
-//            }
-
-//            if(enterpriseExixts == false){
-//
-//                String name = txtEnterpriseName.getText();
-//                Enterprise enterprise = network.getEnterpriseDirectory().createAndAddEnterprise(name, type);
-//                populateTable();
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Enterprise for this type already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
-//            }
-
+            }
+            else{
+                System.out.println("Error in inserting!");
+            }
+           
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }  
+       
+              
+        }
+        else 
+            JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
             txtEnterpriseName.setText("");
         }else
             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -228,7 +240,69 @@ public class ManageEnterpriseInterface extends javax.swing.JPanel {
     private void cdCityItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cdCityItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_cdCityItemStateChanged
-
+    
+    private void populateEnterpriseTable(){
+        try {
+ 
+            String sql = "select * from Enterprise";
+            p = con.prepareStatement(sql);
+            rs = p.executeQuery();
+ 
+            
+            ArrayList<String> enterprise = new ArrayList<String>();
+            
+            while (rs.next()) {
+                String name = rs.getString("enterprise_name");
+                String city_name = rs.getString("city_name");
+                String type = rs.getString("type");
+                enterprise.add(name);
+                enterprise.add(city_name);
+                enterprise.add(type);
+            }
+            DefaultTableModel model = (DefaultTableModel) enterpriseJTable.getModel();
+            model.setRowCount(0);
+            Object data[] = new Object[3];
+            
+            for (int i = 0; i < enterprise.size(); i+=3){
+                
+                String name = enterprise.get(i);
+                String city_name = enterprise.get(i+1);
+                String type = enterprise.get(i+2);
+                data[0] = name;
+                data[1] = city_name;
+                data[2] = type;
+                 
+                model.addRow(data);
+                
+            }
+        }
+ 
+        
+        catch (SQLException e) {
+ 
+            
+            System.out.println(e);
+        }
+    }
+    
+    public void populateCityDropdown(){
+        try{
+            PreparedStatement p = null;
+            ResultSet rs = null;
+  
+            String sql = "select * from city";
+            p = con.prepareStatement(sql);
+            rs = p.executeQuery();
+ 
+            while (rs.next()) {
+                String name = rs.getString("city_name");
+                
+                cdCity.addItem(name);
+            }
+        }catch(SQLException ex){
+            System.out.println("Database error. Please Logout & Login again.");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddEnterprise;

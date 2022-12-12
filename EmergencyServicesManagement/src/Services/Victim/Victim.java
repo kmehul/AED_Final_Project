@@ -17,7 +17,16 @@ public class Victim {
     private String city;
     private String state;
     private int zip;
+    private String initialDesc;
 
+    public String getInitialDesc() {
+        return initialDesc;
+    }
+
+    public void setInitialDesc(String initialDesc) {
+        this.initialDesc = initialDesc;
+    }
+    
     public int getVictimId() {
         return victimId;
     }

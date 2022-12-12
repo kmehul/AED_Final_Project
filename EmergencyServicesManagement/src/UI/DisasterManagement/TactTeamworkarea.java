@@ -147,24 +147,7 @@ public class TactTeamworkarea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignTomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignTomeActionPerformed
-        // TODO add your handling code here:
-        //        int selectedRow;
-        //        selectedRow= tblAmbulanceRequest.getSelectedRow();
-        //
-        //        if (selectedRow >= 0) {
-            //
-            //            AmbulanceWorkRequest request = (AmbulanceWorkRequest) tblAmbulanceRequest.getValueAt(selectedRow, 0);
-            //            request.setStatus("Departed");
-            //            populateTable();
-            //            JOptionPane.showMessageDialog(null, "Ambulance sent");
-            //
-            //        }
-        //
-        //        else
-        //        {
-            //            JOptionPane.showMessageDialog(null, "Please select a row from the cases table!", "Warning", JOptionPane.WARNING_MESSAGE);
-            //            return;
-            //        }
+       
     }//GEN-LAST:event_btnAssignTomeActionPerformed
 
     private void btnReportCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportCaseActionPerformed

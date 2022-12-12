@@ -113,24 +113,6 @@ this.con = con;
 
         report panel = new report(user, con);
         new MainJFrame().replaceSplitPaneChild(this, panel);
-
-        //        int selectedRow;
-        //        selectedRow= tblAmbulanceRequest.getSelectedRow();
-        //
-        //        if (selectedRow >= 0) {
-            //
-            //            AmbulanceWorkRequest request = (AmbulanceWorkRequest) tblAmbulanceRequest.getValueAt(selectedRow, 0);
-            //            request.setStatus("Departed");
-            //            populateTable();
-            //            JOptionPane.showMessageDialog(null, "Ambulance sent");
-            //
-            //        }
-        //
-        //        else
-        //        {
-            //            JOptionPane.showMessageDialog(null, "Please select a row from the cases table!", "Warning", JOptionPane.WARNING_MESSAGE);
-            //            return;
-            //        }
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

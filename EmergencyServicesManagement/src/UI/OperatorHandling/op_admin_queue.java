@@ -5,8 +5,12 @@
 package UI.OperatorHandling;
 
 import Services.UserAccount.UserAccount;
+import Services.Victim.VictimDirectory;
+import Services.WorkQueue.WorkQueue;
 import UI.MainJFrame;
 import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,6 +20,10 @@ public class op_admin_queue extends javax.swing.JPanel {
 
     private UserAccount user;
     private Connection con;
+    PreparedStatement p = null;
+        PreparedStatement p2 = null;
+        ResultSet rs = null;
+        ResultSet rs2 = null;
     
     /**
      * Creates new form op_admin_queue
@@ -24,6 +32,8 @@ public class op_admin_queue extends javax.swing.JPanel {
         initComponents();
         this.user = user;
         this.con = con;
+        
+        populateTables();
     }
 
     /**
@@ -36,19 +46,39 @@ public class op_admin_queue extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        opTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         backbtn = new javax.swing.JButton();
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        opTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
                 "Work ID", "OPERATOR ID", "VICTIM NAME", "VICTIM PHONE", "VICTIM ADDRESS", "VICTIM CITY", "VICTIM STATE", "VICTIM ZIP", "DESCRIPTION", "ASSIGN TO", "STATUS", "RECEIVED DATE", "RESOLVED DATE"
             }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        opTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opTableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(opTable);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -95,11 +125,93 @@ public class op_admin_queue extends javax.swing.JPanel {
         new MainJFrame().replaceSplitPaneChild(this, panel);
     }//GEN-LAST:event_backbtnActionPerformed
 
+    private void opTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opTableMouseClicked
+        // TODO add your handling code here:
+        populateTables();
+    }//GEN-LAST:event_opTableMouseClicked
+
+    
+    
+    private void populateTables(){
+        
+        try {
+            ArrayList<String> directory = new ArrayList<>();
+            
+            String sql = "select w.*,v.* from work_queue w join victim v on v.victim_id = w.victim_id;";
+            p = con.prepareStatement(sql);
+            rs = p.executeQuery();
+     
+          
+            while (rs.next()) {
+                String victimName = rs.getString("victim_name");
+                String victimphone = rs.getString("victim_phone");
+                String victimaddress = rs.getString("victim_address");
+                String victimcity = rs.getString("victim_city");
+                String victimstate = rs.getString("victim_state");
+                String victimzip = rs.getString("victim_zip");
+                String description = rs.getString("initial_description");
+                System.out.println(victimzip);
+
+ 
+                    String workid = rs.getString("work_id");
+                    String operatorid = rs.getString("user_id");
+                    String assignTo = rs.getString("assign_to");
+                    String status = rs.getString("case_status");
+                    String receivedDate = String.valueOf(rs.getDate("received_date"));
+                    String resolvedDate = String.valueOf(rs.getDate("resolved_date"));
+                    System.out.println(status);
+                    directory.add(workid);
+                    directory.add(operatorid);
+                    directory.add(victimName);
+                    directory.add(victimphone);
+                    directory.add(victimaddress);
+                    directory.add(victimcity);
+                    directory.add(victimstate);
+                    directory.add(victimzip);
+                    directory.add(description);
+                    directory.add(assignTo);
+                    directory.add(status);
+                    directory.add(receivedDate);
+                    directory.add(resolvedDate);
+                    DefaultTableModel model = (DefaultTableModel) opTable.getModel();
+            model.setRowCount(0);
+            Object data[] = new Object[13];
+            
+            for (int i = 0; i < directory.size(); i+=13){
+                    
+                data[0] = directory.get(i);
+                data[1] = directory.get(i+1);
+                data[2] = directory.get(i+2);
+                data[3] = directory.get(i+3);
+                data[4] = directory.get(i+4);
+                data[5] = directory.get(i+5);
+                data[6] = directory.get(i+6);
+                data[7] = directory.get(i+7);
+                data[8] = directory.get(i+8);
+                data[9] = directory.get(i+9);
+                data[10] = directory.get(i+10);
+                data[11] = directory.get(i+11);
+                data[12] = directory.get(i+12);
+                 
+                model.addRow(data);
+            }
+                
+            }
+        }
+ 
+ 
+        catch (SQLException e) {
+ 
+            System.out.println(e.getMessage());
+        }
+            
+            
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable opTable;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,15 +4,14 @@
  */
 package UI.AdminInterface;
 
-import Services.City.City;
 import Services.UserAccount.UserAccount;
 import UI.MainJFrame;
-import java.awt.CardLayout;
-import java.awt.Component;
-import static java.time.Clock.system;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,9 +20,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ManageCityAdminInterface extends javax.swing.JPanel {
 
-    JPanel userProcessContainer;
     Connection con;
     UserAccount user;
+            ResultSet rs = null;
+        Statement stmt = null;
     
     /**
      * Creates new form ManageCityAdminInterface11
@@ -32,6 +32,11 @@ public class ManageCityAdminInterface extends javax.swing.JPanel {
         initComponents();
         this.con = con;
         this.user = user;
+        try{
+        populateCityTable();
+        }catch(SQLException e){
+              System.out.println("Database error. Please Logout & Login again.");
+        }
     }
 
     /**
@@ -151,57 +156,73 @@ public class ManageCityAdminInterface extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnSubmitCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitCityActionPerformed
-        
+
         String name = txtCityName.getText();
-//       try {
-//            Connection conn = DriverManager.getConnection(url, user, password);
-// 
-//            String sql = "INSERT INTO person (first_name, last_name, photo) values (?, ?, ?)";
-//            PreparedStatement statement = conn.prepareStatement(sql);
-//            statement.setString(1, "Tom");
-//            statement.setString(2, "Eagar");
-//            InputStream inputStream = new FileInputStream(new File(filePath));
-// 
-//            statement.setBlob(3, inputStream);
-// 
-//            int row = statement.executeUpdate();
-//            if (row > 0) {
-//                System.out.println("A contact was inserted with photo image.");
-//            }
-//            conn.close();
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }  
+        System.out.println(name);
+        if(!name.equals("")){  
+        try { 
+            String sql = "INSERT INTO city (city_name) values (?)";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, name);
+
+            int row = statement.executeUpdate();
+           
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }  
        
-        if(!name.equals("")){
-            
-//            City city = system.createAndAddNetwork();
-//            city.setName(name);
-            
-            populateCityTable();
+              
+            try {
+                populateCityTable();
+            } catch (SQLException ex) {
+                Logger.getLogger(ManageCityAdminInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else 
             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnSubmitCityActionPerformed
 
     private void txtCityNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCityNameKeyPressed
-        // TODO add your handling code here:
-        //        Validator.onlyString(evt, txtCityName);
+        
     }//GEN-LAST:event_txtCityNameKeyPressed
 
     private void txtCityNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCityNameActionPerformed
 
-    private void populateCityTable() {
-        DefaultTableModel model = (DefaultTableModel) tblManageCity.getModel();
+    private void populateCityTable() throws SQLException {
+        PreparedStatement p = null;
+        ResultSet rs = null;
+  
+        try {
+ 
+            String sql = "select * from city";
+            p = con.prepareStatement(sql);
+            rs = p.executeQuery();
+ 
+            ArrayList<String> city = new ArrayList<String>();
 
-//        model.setRowCount(0);
-//        for (City city : system.getNetworkList()) {
-//            Object[] row = new Object[1];
-//            row[0] = city;
-//            model.addRow(row);
-//        }
+            while (rs.next()) {
+                String name = rs.getString("city_name");
+                city.add(name);
+            }
+            DefaultTableModel model = (DefaultTableModel) tblManageCity.getModel();
+            model.setRowCount(0);
+            Object data[] = new Object[5];
+            
+            for (int i = 0; i < city.size(); i++){
+                
+                String name = city.get(i);
+                  
+                data[0] = name;
+                 
+                model.addRow(data);
+                
+            }
+        }
+        catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

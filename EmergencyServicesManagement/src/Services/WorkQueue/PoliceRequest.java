@@ -18,5 +18,5 @@ public class PoliceRequest extends WorkRequest{
     private String caseType;
     private Date caseDate;
     private String comments;
-    //private Suspect suspect;
+    
 }

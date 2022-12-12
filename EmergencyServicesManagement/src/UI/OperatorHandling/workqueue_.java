@@ -5,9 +5,20 @@
 package UI.OperatorHandling;
 
 
+import Constants.CustomValidations;
 import Services.UserAccount.UserAccount;
+import Services.Victim.Victim;
+import Services.WorkQueue.WorkRequest;
 import UI.MainJFrame;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,7 +36,12 @@ public class workqueue_ extends javax.swing.JPanel {
         initComponents();
         this.user = user;
         this.con = con;
-
+        
+        jTextField5.setText(String.valueOf(user.getId()));
+        jTextField5.setEditable(false);
+              
+        
+        populateAssignToDropDown();
     }
 
     /**
@@ -37,17 +53,11 @@ public class workqueue_ extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField8 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField10 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
@@ -65,41 +75,26 @@ public class workqueue_ extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         btnback = new javax.swing.JButton();
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("RECEIVED DATE");
-
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setText("STATUS");
-
         jLabel6.setText("DESCRIPTION");
 
         jButton1.setText("CREATE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("ASSIGN TO");
 
-        jLabel8.setText("RESOLVED DATE");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox1KeyPressed(evt);
+            }
+        });
 
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField10ActionPerformed(evt);
-            }
-        });
-
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
             }
         });
 
@@ -140,10 +135,20 @@ public class workqueue_ extends javax.swing.JPanel {
                 jTextField6ActionPerformed(evt);
             }
         });
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField6KeyPressed(evt);
+            }
+        });
 
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField11ActionPerformed(evt);
+            }
+        });
+        jTextField11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField11KeyPressed(evt);
             }
         });
 
@@ -179,18 +184,6 @@ public class workqueue_ extends javax.swing.JPanel {
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
                         .addComponent(jComboBox1, 0, 725, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(106, 106, 106)
-                        .addComponent(jTextField4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField7)
-                            .addComponent(jTextField8)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
@@ -272,19 +265,7 @@ public class workqueue_ extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68)
+                .addGap(177, 177, 177)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(btnback)
@@ -292,21 +273,9 @@ public class workqueue_ extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
-
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField10ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
         // TODO add your handling code here:
@@ -338,7 +307,118 @@ public class workqueue_ extends javax.swing.JPanel {
         new MainJFrame().replaceSplitPaneChild(this, panel);
     }//GEN-LAST:event_btnbackActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Victim victim = new Victim();
+        WorkRequest request = new WorkRequest();
+         LocalDate now = java.time.LocalDate.now();
+                
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+      LocalDate today = LocalDate.now(ZoneId.of("US/Eastern"));
+      LocalDate parse = LocalDate.parse(now.toString(), formatter);
+      
+        victim.setName(jTextField1.getText());
+        victim.setPhoneNo(Long.parseLong(jTextField11.getText()));
+        victim.setAddress(jTextField12.getText());
+        victim.setCity(jTextField3.getText());
+        victim.setState(jTextField9.getText());
+        victim.setZip(Integer.parseInt(jTextField6.getText()));
+        victim.setInitialDesc(jTextField10.getText());
+        
+        request.setCase_status("Pending");
+        request.setDescription(jTextField10.getText());
+        request.setUser_id(Integer.parseInt(jTextField5.getText()));
+        request.setAssign_to(jComboBox1.getSelectedItem().toString());    
+        try {
+            request.setRecievedDate(parse); //YYYY-MM-DD HH:MI:SS
+        } catch (Exception ex) {
+            Logger.getLogger(workqueue_.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if(!(jTextField1.getText().equals("")|| jTextField11.getText().equals("") || jTextField12.getText().equals("")
+           ||jTextField3.getText().equals("")|| jTextField9.getText().equals("")  || jTextField6.getText().equals(""))){
+            
+            
+            
+            try { 
+                String sql1 = "INSERT INTO victim(victim_name, victim_phone, victim_address, victim_city, victim_state, victim_zip, initial_description) values (?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement statement = con.prepareStatement(sql1);
+                statement.setString(1, String.valueOf(victim.getName()));
+                statement.setString(2, String.valueOf(victim.getPhoneNo()));
+                statement.setString(3, String.valueOf(victim.getAddress()));
+                statement.setString(4, String.valueOf(victim.getCity()));
+                statement.setString(5, String.valueOf(victim.getState()));
+                statement.setString(6, String.valueOf((int) victim.getZip()));
+                statement.setString(7, String.valueOf(victim.getInitialDesc()));
+                int row = statement.executeUpdate();
+                
+                int victim_id = 0;
+                try{
+            PreparedStatement p3 = null;
+            ResultSet rs3 = null;
+  
+            String sql = "select max(victim_id) as victim_id from victim";
+            p3 = con.prepareStatement(sql);
+            rs3 = p3.executeQuery();
+ 
+      
+            
+            while (rs3.next()) {
+               victim_id  = rs3.getInt("victim_id");
+            }
+        }catch(SQLException ex){
+            System.out.println("Database error. Please Logout & Login again.");
+        }
+            String sql2 = "INSERT INTO work_queue(user_id, victim_id, assign_to, case_status, received_date) values (?, ?, ?, ?, ?)";
+            PreparedStatement statement2 = con.prepareStatement(sql2);
+            statement2.setString(1, String.valueOf(jTextField5.getText()));
+            statement2.setString(2, String.valueOf(victim_id));
+            statement2.setString(3, String.valueOf(request.getAssign_to()));
+            statement2.setString(4, String.valueOf(request.getCase_status()));
+            statement2.setString(5, String.valueOf(request.getRecievedDate()));
+            
+            int row2 = statement2.executeUpdate();
+           
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }  
+         
+        }
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jTextField11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyPressed
+        // TODO add your handling code here:
+        CustomValidations.onlyInteger(evt, jTextField11, jTextField11.getText(), 10);
+    }//GEN-LAST:event_jTextField11KeyPressed
+
+    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
+        // TODO add your handling code here:
+        CustomValidations.onlyInteger(evt, jTextField6, jTextField6.getText(), 6);
+    }//GEN-LAST:event_jTextField6KeyPressed
+
+    private void jComboBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1KeyPressed
+
+    private void populateAssignToDropDown(){
+        try{
+            PreparedStatement p = null;
+            ResultSet rs = null;
+  
+            String sql = "select * from Enterprise";
+            p = con.prepareStatement(sql);
+            rs = p.executeQuery();
+ 
+            while (rs.next()) {
+                String name = rs.getString("Enterprise_Name");
+                jComboBox1.addItem(name);
+            }
+        }catch(SQLException ex){
+            System.out.println("Database error. Please Logout & Login again.");
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnback;
     private javax.swing.JButton jButton1;
@@ -350,22 +430,16 @@ public class workqueue_ extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

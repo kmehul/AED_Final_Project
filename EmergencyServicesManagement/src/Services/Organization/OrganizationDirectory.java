@@ -4,10 +4,20 @@
  */
 package Services.Organization;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Anirudh
  */
 public class OrganizationDirectory {
-    
+    private ArrayList<Organization> orgList;
+
+    public ArrayList<Organization> getOrgList() {
+        return orgList;
+    }
+
+    public void setOrgList(ArrayList<Organization> orgList) {
+        this.orgList = orgList;
+    }
 }

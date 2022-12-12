@@ -356,39 +356,7 @@ public class AddNewAmbulanceEmployee extends javax.swing.JPanel {
     }//GEN-LAST:event_txtnameActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        if(!txtuserName.getText().equals("")){
-            //            Enterprise enterprise = (Enterprise) cbEnterprise.getSelectedItem();
-
-            String username = txtname.getText();
-            String password = String.valueOf(pwdPassword.getPassword());
-            String name = txtuserName.getText();
-
-            //            Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
-            //            if (EcoSystem.checkIfUsernameIsUnique(username)) {
-                //                UserAccount account = null;
-                //                if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.PoliceEnterprise) {
-                    //                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new PoliceAdminRole());
-                    //                }
-                //                else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.HospitalEnterprise) {
-                    //                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());
-                    //                }
-                //                else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.GovernmentEnterprise) {
-                    //                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new GovernmentAdminRole());
-                    //                }
-
-                //                populateTable();
-                JOptionPane.showMessageDialog(null, "Admin employee created");
-                txtuserName.setText("");
-                txtname.setText("");
-                pwdPassword.setText("");
-                //            }
-            //else {
-                //JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
-                //}
-            //            else{
-                //                JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
-                //            }
-        }
+ 
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void pwdPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdPasswordActionPerformed

@@ -7,6 +7,8 @@ package UI.Ambulance;
 import Services.UserAccount.UserAccount;
 import UI.MainJFrame;
 import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,11 +18,16 @@ public class Ambulance_master_qeue extends javax.swing.JPanel {
 
     private Connection con;
     private UserAccount user;
+    PreparedStatement p = null;
+        PreparedStatement p2 = null;
+        ResultSet rs = null;
+        ResultSet rs2 = null;
 
     public Ambulance_master_qeue(UserAccount user, Connection con) {
         initComponents();
        	this.user = user;
         this.con = con;
+        populateTables();
     }
 
     @SuppressWarnings("unchecked")
@@ -108,26 +115,83 @@ public class Ambulance_master_qeue extends javax.swing.JPanel {
     }//GEN-LAST:event_btnbackActionPerformed
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
-        // TODO add your handling code here:
-        //        int selectedRow;
-        //        selectedRow= tblAmbulanceRequest.getSelectedRow();
-        //
-        //        if (selectedRow >= 0) {
-            //
-            //            AmbulanceWorkRequest request = (AmbulanceWorkRequest) tblAmbulanceRequest.getValueAt(selectedRow, 0);
-            //            request.setStatus("Departed");
-            //            populateTable();
-            //            JOptionPane.showMessageDialog(null, "Ambulance sent");
-            //
-            //        }
-        //
-        //        else
-        //        {
-            //            JOptionPane.showMessageDialog(null, "Please select a row from the cases table!", "Warning", JOptionPane.WARNING_MESSAGE);
-            //            return;
-            //        }
+     
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
+       
+    private void populateTables(){
+        
+        try {
+            ArrayList<String> directory = new ArrayList<>();
+            
+            String sql = "select w.*,v.* from work_queue w join victim v on v.victim_id = w.victim_id;";
+            p = con.prepareStatement(sql);
+            rs = p.executeQuery();
+     
+            while (rs.next()) {
+                String victimName = rs.getString("victim_name");
+                String victimphone = rs.getString("victim_phone");
+                String victimaddress = rs.getString("victim_address");
+                String victimcity = rs.getString("victim_city");
+                String victimstate = rs.getString("victim_state");
+                String victimzip = rs.getString("victim_zip");
+                String description = rs.getString("initial_description");
+                System.out.println(victimzip);
+
+                    String workid = rs.getString("work_id");
+                    String operatorid = rs.getString("user_id");
+                    String assignTo = rs.getString("assign_to");
+                    String status = rs.getString("case_status");
+                    String receivedDate = String.valueOf(rs.getDate("received_date"));
+                    String resolvedDate = String.valueOf(rs.getDate("resolved_date"));
+                    System.out.println(status);
+                    directory.add(workid);
+                    directory.add(operatorid);
+                    directory.add(victimName);
+                    directory.add(victimphone);
+                    directory.add(victimaddress);
+                    directory.add(victimcity);
+                    directory.add(victimstate);
+                    directory.add(victimzip);
+                    directory.add(description);
+                    directory.add(assignTo);
+                    directory.add(status);
+                    directory.add(receivedDate);
+                    directory.add(resolvedDate);
+                    DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+            model.setRowCount(0);
+            Object data[] = new Object[13];
+            
+            for (int i = 0; i < directory.size(); i+=13){
+                    
+                data[0] = directory.get(i);
+                data[1] = directory.get(i+1);
+                data[2] = directory.get(i+2);
+                data[3] = directory.get(i+3);
+                data[4] = directory.get(i+4);
+                data[5] = directory.get(i+5);
+                data[6] = directory.get(i+6);
+                data[7] = directory.get(i+7);
+                data[8] = directory.get(i+8);
+                data[9] = directory.get(i+9);
+                data[10] = directory.get(i+10);
+                data[11] = directory.get(i+11);
+                data[12] = directory.get(i+12);
+                 
+                model.addRow(data);
+            }
+                
+            }
+        }
+ 
+        
+        catch (SQLException e) {
+            
+            System.out.println(e.getMessage());
+        }
+            
+            
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignToMe;

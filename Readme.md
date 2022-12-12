@@ -73,3 +73,7 @@ __15. Tactical Admin Sequence Diagram:-__
 __16. Tactical Official Sequence Diagram:-__
 
 <img src="Photos/TacticalOfficialSequenceDiagram.png" alt="Tactical Official Sequence Diagram">
+
+__17. Class Diagram__
+
+<img src="Photos/aed_project_class_diagram.png" alt="Class Diagram">
